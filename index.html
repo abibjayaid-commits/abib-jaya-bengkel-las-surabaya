@@ -8,7 +8,7 @@
     <meta name="google-site-verification" content="wqd8xN_Am40ZybZ7bkUXpVnk6I9uPyKjZRZi3JOUfKk" />
     
     <!-- ANTI-DARK MODE SHIELD (Metode Browser Flags) -->
-    <!-- Memberitahu browser bahwa situs ini HANYA mendukung mode terang & menolak inversi warna otomatis -->
+    <!-- Memaksa browser hanya menggunakan mode terang -->
     <meta name="color-scheme" content="light only">
     <meta name="supported-color-schemes" content="light">
     
@@ -88,27 +88,49 @@
                 category: 'Tangga Putar'
             }
         ];
+
+        function generateWaLink(category) {
+            let message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [" + category + "].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Material Utama: ...";
+
+            // Tambahkan pertanyaan spesifik berdasarkan kategori untuk menyaring niat
+            if (category === 'Kanopi') {
+                message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Kanopi].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Atap (Kaca/Alderon/Spandek/Lainnya): ...";
+            } else if (category === 'Pagar') {
+                message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Pagar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Jenis Pagar (Hollow/Besi Tempa/Cutting Laser): ...";
+            } else if (category === 'Railing') {
+                 message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Railing].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Lokasi (Tangga/Balkon) & Material (Stainless/Besi): ...";
+            } else if (category === 'Tangga Putar') {
+                 message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Tangga Putar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Tinggi Lantai ke Lantai: ...%0A4. Diameter Ruang yang Tersedia: ...";
+            } else if (category === 'Proyek Khusus') {
+                 message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Konstruksi Baja Berat/Proyek Khusus].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Luas Bangunan (m2): ...%0A4. Penggunaan (Gudang/Pabrik/Mezzanine): ...";
+            }
+
+            return 'https://wa.me/6281216359499?text=' + message;
+        }
     </script>
     
     <style>
-        /* CSS Dasar & Anti Dark Mode Hack */
+        /* CSS Dasar & Solusi Anti Dark Mode yang Lebih Agresif */
         :root {
             color-scheme: light only; /* Memaksa browser modern untuk tetap di mode terang */
         }
         
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #f7f7f7 !important; /* Force background terang */
-            color: #1f2937 !important; /* Force text gelap */
+            background-color: #f7f7f7;
+            color: #1f2937;
+            /* Anti-Dark Mode Hack: Menetralkan inversi warna paksa pada level body */
+            filter: invert(0) hue-rotate(0deg); 
         }
         
-        /* HACK TAMBAHAN: Memaksa elemen agar tidak di-invert oleh algoritma browser.
-            Browser flags sering membalik warna background putih menjadi hitam.
-            Ini mencoba mencegahnya.
-        */
+        /* HACK TAMBAHAN: Memaksa elemen agar tidak di-invert oleh algoritma browser. */
         html, body {
-            background-color: #ffffff !important;
-            /* filter: none !important; */
+            background-color: #ffffff;
+        }
+        
+        /* Penting: Pastikan elemen media tidak terpengaruh oleh filter body */
+        img, video, iframe, canvas {
+            filter: inherit; 
         }
 
         /* Style untuk Hero Section agar terlihat kokoh (CSS Texture) */
@@ -555,17 +577,17 @@
                                 <img :src="modalImg.src" loading="lazy" class="w-full h-full object-contain max-h-[80vh]">
                             </div>
                             <div class="md:w-1/4 p-6 flex flex-col justify-center border-l border-gray-700">
-                                <span class="text-orange-safety font-bold uppercase text-xs tracking-widest mb-2" x-text="modalImg.category"></span>
-                                <h3 class="text-lg font-bold text-white mb-4" x-text="modalImg.alt"></h3>
+                                <!-- Hapus deskripsi modalImg.alt, hanya tampilkan kategori sebagai judul -->
+                                <h3 class="font-mono text-2xl font-extrabold text-orange-safety uppercase tracking-widest mb-4 text-center" x-text="modalImg.category"></h3>
                                 
                                 <div class="mt-4">
                                     <p class="text-white text-sm font-bold mb-4 text-center">Tertarik dengan model ini?</p>
                                     
-                                    <!-- WA LINK NIAT & DINAMIS -->
-                                    <a :href="'https://wa.me/6281216359499?text=Halo%20Tim%20Abib%20Jaya.%0A%0ASaya%20tertarik%20dengan%20referensi%20model%3A%20' + modalImg.alt + '%20(' + modalImg.category + ').%0A%0AData%20Singkat%20Saya%3A%0A1.%20Lokasi%20Proyek%3A%20...%0A2.%20Estimasi%20Ukuran%20(PxL)%3A%20...%0A3.%20Rencana%20Pengerjaan%3A%20(Segera%2FBulan%20Depan)%0A%0AMohon%20info%20estimasi%20biaya.'"  
+                                    <!-- WA LINK NIAT & DINAMIS (Menggunakan fungsi generateWaLink) -->
+                                    <a :href="generateWaLink(modalImg.category)"  
                                        class="bg-orange-safety text-white py-3 px-4 text-center font-bold uppercase text-sm hover:bg-orange-dark transition block rounded shadow-lg border-b-4 border-orange-800 active:border-b-0 active:translate-y-1 w-full"
                                        target="_blank">
-                                            <i class="fab fa-whatsapp mr-2"></i> Ajukan Konsultasi
+                                            <i class="fab fa-whatsapp mr-2"></i> Ajukan Konsultasi Serius
                                     </a>
                                 </div>
                             </div>
