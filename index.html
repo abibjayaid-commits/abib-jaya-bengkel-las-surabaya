@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth" style="background-color: #ffffff; color-scheme: light;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,13 @@
     <!-- GOOGLE VERIFICATION TAG ADDED HERE -->
     <meta name="google-site-verification" content="wqd8xN_Am40ZybZ7bkUXpVnk6I9uPyKjZRZi3JOUfKk" />
     
-    <!-- ANTI-DARK MODE SHIELD (Metode Browser Flags) -->
-    <!-- Memaksa browser hanya menggunakan mode terang -->
+    <!-- ANTI-DARK MODE SHIELD (VERSI STABIL) -->
+    <!-- Mencegah inversi warna tanpa merusak layout position:fixed -->
     <meta name="color-scheme" content="light only">
     <meta name="supported-color-schemes" content="light">
+    <meta name="theme-color" content="#ffffff">
     
-    <!-- Caching Directive: Harap dicatat, ini harus dikonfigurasi di server (Cache-Control HTTP Header) untuk efek penuh. Netlify sudah mengurus ini di sisi CDN. -->
+    <!-- Caching Directive -->
     <meta http-equiv="Cache-Control" content="max-age=31536000, public"> 
     
     <meta name="description" content="Bengkel Las Abib Jaya. Spesialis Konstruksi Besi Berkualitas, Baja Ringan/Berat, Canopy, Pagar & Railing Kualitas Premium. Melayani proyek di seluruh Indonesia. Berpengalaman 20+ tahun.">
@@ -110,28 +111,36 @@
     </script>
     
     <style>
-        /* CSS Dasar & Solusi Anti Dark Mode yang Lebih Agresif */
-        :root {
-            color-scheme: light only; /* Memaksa browser modern untuk tetap di mode terang */
-        }
+        /* CSS Dasar & Solusi Anti Dark Mode yang LEBIH AMAN */
         
+        /* 1. Paksa Root ke Putih dengan Prioritas Tertinggi */
+        :where(html, body) {
+            background-color: #ffffff !important;
+            color: #1f2937 !important;
+            color-scheme: light !important;
+        }
+
+        /* 2. HAPUS filter: invert(0) yang merusak posisi Modal */
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #f7f7f7;
-            color: #1f2937;
-            /* Anti-Dark Mode Hack: Menetralkan inversi warna paksa pada level body */
-            filter: invert(0) hue-rotate(0deg); 
-        }
-        
-        /* HACK TAMBAHAN: Memaksa elemen agar tidak di-invert oleh algoritma browser. */
-        html, body {
+            /* Filter dihapus karena membuat bug pada position: fixed di mobile */
             background-color: #ffffff;
         }
-        
-        /* Penting: Pastikan elemen media tidak terpengaruh oleh filter body */
-        img, video, iframe, canvas {
-            filter: inherit; 
+
+        /* 3. Lindungi elemen gambar dan media dari filter inversi (jika browser memaksa) */
+        img, video, iframe, canvas, svg {
+            mix-blend-mode: normal !important;
         }
+
+        /* 4. Paksa Section yang seharusnya putih agar tetap putih */
+        .bg-white, section.bg-white {
+            background-color: #ffffff !important;
+        }
+        
+        /* 5. Pastikan background gelap tetap gelap */
+        .bg-navy-deep { background-color: #001F3F !important; }
+        .bg-dark-bg { background-color: #111827 !important; }
+        .bg-black { background-color: #000000 !important; }
 
         /* Style untuk Hero Section agar terlihat kokoh (CSS Texture) */
         .hero-bg {
@@ -288,7 +297,7 @@
                 <a href="#faq" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">FAQ</a>  
                 <a href="#kontak" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Kontak</a>
                 <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20ingin%20jadwal%20survei%20untuk%20proyek%20konstruksi.%0A%0ANama%3A%20...%0ALokasi%3A%20...%0AJenis%20Kerja%3A%20..." target="_blank" class="block px-3 py-2 text-center rounded-sm bg-orange-safety text-navy-deep font-bold mt-4 hover:bg-orange-700 hover:text-white">
-                    <i class="fab fa-whatsapp mr-2"></i> KONSULTASI GRATIS
+                    <i class="fab fa-whatsapp mr-2"></i> KONSULTASI
                 </a>
             </div>
         </div>
@@ -569,13 +578,21 @@
                 <div x-show="modalOpen" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm" x-cloak>
                     <div class="absolute inset-0" @click="closeModal()"></div>
                     <div class="relative w-full max-w-5xl bg-navy-light border border-gray-700 rounded-lg overflow-hidden shadow-2xl">
-                        <button @click="closeModal()" class="absolute top-4 right-4 z-10 text-white hover:text-orange-safety text-3xl">
+                        <!-- Tombol Tutup 'X' (Di dalam Modal, di samping kanan atas) -->
+                        <button @click="closeModal()" class="absolute top-4 right-4 z-20 text-white hover:text-orange-safety text-3xl p-2 rounded-full bg-black/20 hover:bg-black/50 transition-colors">
                             <i class="fas fa-times"></i>
                         </button>
+                        
                         <div class="flex flex-col md:flex-row">
-                            <div class="md:w-3/4 bg-black flex items-center justify-center p-2">
+                            <!-- Kontainer Gambar -->
+                            <div class="md:w-3/4 bg-black flex items-center justify-center p-2 min-h-[400px] md:min-h-[600px] relative">
                                 <img :src="modalImg.src" loading="lazy" class="w-full h-full object-contain max-h-[80vh]">
+                                
+                                <!-- Hapus Tombol Tutup Tambahan yang JELAS (Bottom Left, Always Visible) sesuai permintaan user. -->
+                                
                             </div>
+                            
+                            <!-- Kontainer WA Link -->
                             <div class="md:w-1/4 p-6 flex flex-col justify-center border-l border-gray-700">
                                 <!-- Hapus deskripsi modalImg.alt, hanya tampilkan kategori sebagai judul -->
                                 <h3 class="font-mono text-2xl font-extrabold text-orange-safety uppercase tracking-widest mb-4 text-center" x-text="modalImg.category"></h3>
