@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Arsip Dokumentasi Proyek Abib Jaya.">
+    <meta name="description" content="Arsip Dokumentasi Proyek Abib Jaya. Bukti kerja keras dan presisi tim kami.">
 
     <link rel="icon" type="image/png" href="https://placehold.co/32x32/FF4500/001F3F?text=AJ">
 
@@ -112,21 +112,43 @@
 
             margin-bottom: 10px; /* Jarak bawah antar item */
 
-            background-color: #1f2937; /* Placeholder color saat loading */
+            /* Menggunakan div luar untuk aspek rasio */
+
+            background-color: #1f2937; 
 
             border-radius: 4px;
 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
         }
 
-        
+        /* Perbaikan: Container untuk menampung aspek rasio 4:3 agar tidak ada CLS */
 
+        .image-container {
+
+            position: relative;
+
+            padding-top: 75%; /* Rasio 4:3 (3/4 * 100%) */
+
+            overflow: hidden;
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Pastikan gambar menutupi area */
+        }
+        
         .item-card:hover img { transform: scale(1.05); }
 
     </style>
 
 </head>
 
- 
+ 
 
 <body class="bg-dark-bg text-gray-300 font-sans antialiased" x-data="portfolioApp()">
 
@@ -148,10 +170,11 @@
 
                 </a>
 
-                <!-- 1. Hapus tulisan yang tidak perlu -->
-                <div class="hidden md:block"></div>
+                <!-- Navigasi Dihapus sesuai permintaan sebelumnya -->
 
-                <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20sudah%20melihat%20galeri%20proyek%20Anda%20dan%20tertarik%20untuk%20konsultasi%20serius%20terkait%20kebutuhan%20berikut%3A%0A%0A1.%20Jenis%20Proyek%3A%20...%0A2.%20Lokasi%3A%20...%0A3.%20Estimasi%20Ukuran%20(PxL)%3A%20..." class="bg-orange-safety text-navy-deep px-4 py-2 font-bold font-mono text-sm uppercase hover:bg-white transition" target="_blank">
+                <div class="hidden md:block"></div> 
+
+                <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20sudah%20melihat%20galeri%20proyek%20Anda%20dan%20tertarik%20untuk%20konsultasi%20serius%20terkait%20kebutuhan%20berikut%3A%0A%0A1.%20Jenis%20Proyek%3A%20...%0A2.%20Lokasi%3A%20...%0A3.%20Estimasi%20Ukuran%20(PxL)%3A%20..." class="bg-orange-safety text-navy-deep px-4 py-2 font-bold font-mono text-sm uppercase hover:bg-white transition rounded-md" target="_blank">
 
                     <i class="fab fa-whatsapp mr-1"></i> MINTA PENAWARAN
 
@@ -191,30 +214,29 @@
 
             <div class="masonry-grid">
 
+                <!-- Menggunakan visibleItems untuk memuat hanya yang perlu, mengurangi beban awal -->
+
                 <template x-for="item in visibleItems" :key="item">
 
-                    <div class="masonry-item item-card group relative overflow-hidden cursor-pointer border border-gray-700"
+                    <div class="masonry-item item-card group relative overflow-hidden cursor-pointer border border-gray-700 rounded-lg shadow-xl"
 
                          @click="openModal(item)">
 
                         
-
-                        <!-- Item akan melompat-lompat saat dimuat, merusak janji presisi Anda -->
-
-                        <img :src="item" 
-
-                             loading="lazy" 
-
-                             decoding="async"
-
-                             alt="Bukti Proyek Abib Jaya" 
-
-                             class="w-full h-auto min-h-[150px] object-cover transition duration-700 ease-out block bg-gray-800"
-
-                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/333/FFF?text=Foto+Gagal+Muat';">
-
+                        <!-- Perbaikan CLS: Memastikan container memiliki padding-top untuk rasio 4:3 -->
+                        <div class="image-container">
+                            <img :src="item" 
+                                 loading="lazy" 
+                                 decoding="async"
+                                 alt="Bukti Proyek Abib Jaya" 
+                                 class="transition duration-700 ease-out block bg-gray-800 group-hover:opacity-80"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/400x300/333/FFF?text=Foto+Gagal+Muat';">
+                        </div>
                         
 
+                        <div class="absolute inset-0 bg-navy-deep/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-eye text-3xl text-orange-safety p-3 bg-black/70 rounded-full border border-orange-safety/50"></i>
+                        </div>
                     </div>
 
                 </template>
@@ -231,9 +253,9 @@
 
                         @click="loadMore()"
 
-                        class="inline-block px-12 py-4 bg-transparent border-2 border-orange-safety text-orange-safety font-mono text-xl font-bold uppercase hover:bg-orange-safety hover:text-navy-deep transition duration-300 tracking-widest">
+                        class="inline-block px-12 py-4 bg-transparent border-2 border-orange-safety text-orange-safety font-mono text-xl font-bold uppercase hover:bg-orange-safety hover:text-navy-deep transition duration-300 tracking-widest rounded-lg shadow-lg">
 
-                    <i class="fas fa-plus-circle mr-2"></i> MUAT ARSIP BERIKUTNYA
+                    <i class="fas fa-plus-circle mr-2"></i> MUAT ARSIP BERIKUTNYA (<span x-text="totalCount - visibleCount"></span> tersisa)
 
                 </button>
 
@@ -247,30 +269,36 @@
 
         <!-- Modal Gambar -->
 
-        <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-4 bg-navy-deep/95 backdrop-blur-md" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-cloak>
+        <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-4 bg-navy-deep/95 backdrop-blur-md" 
+             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+             x-cloak
+             @keydown.escape.window="closeModal()">
 
-            <div class="absolute inset-0" @click="closeModal()"></div>
+            <div class="absolute inset-0 cursor-pointer" @click="closeModal()"></div>
 
-            <div class="relative w-full max-w-6xl h-full md:h-auto md:max-h-[90vh] bg-black border border-gray-700 shadow-2xl flex flex-col overflow-hidden" @click.stop>
+            <div class="relative w-full max-w-6xl h-full md:h-auto md:max-h-[95vh] bg-black border-2 border-orange-safety/50 shadow-2xl flex flex-col overflow-hidden rounded-xl" @click.stop>
 
-                <div class="w-full h-full md:h-[90vh] bg-neutral-900 flex items-center justify-center relative">
+                <div class="w-full h-full bg-neutral-900 flex items-center justify-center relative p-2">
 
-                     <button @click="closeModal()" class="absolute top-4 right-4 z-20 bg-black/50 text-white hover:text-orange-safety w-10 h-10 rounded-full flex items-center justify-center transition border border-gray-600"><i class="fas fa-times text-xl"></i></button>
+                     <button @click="closeModal()" 
+                             class="absolute top-4 right-4 z-20 bg-black/50 text-white hover:text-orange-safety w-10 h-10 rounded-full flex items-center justify-center transition border border-gray-600 focus:outline-none focus:ring-2 ring-orange-safety/70">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
 
                      
 
                      <!-- Modal Image -->
 
-                     <img :src="activeItem" class="max-w-full max-h-full object-contain">
+                     <img :src="activeItem" class="max-w-full max-h-full object-contain rounded-lg">
 
                      
 
-                     <div class="absolute bottom-4 left-4 bg-black/70 px-3 py-1 text-white text-xs font-mono border-l-4 border-orange-safety">
+                     <div class="absolute bottom-4 left-4 bg-black/70 px-3 py-1 text-white text-xs font-mono border-l-4 border-orange-safety rounded-r-md">
 
-                         BUKTI FISIK LAPANGAN
+                         <span x-text="activeItem.substring(activeItem.lastIndexOf('/') + 1)"></span> <!-- Menampilkan nama file -->
 
                      </div>
-
                 </div>
 
             </div>
@@ -283,7 +311,7 @@
 
     <footer class="bg-black text-center py-6 border-t border-gray-800 text-gray-600 text-xs font-mono">
 
-        <p>&copy; 2024 ABIB JAYA KONSTRUKSI. DATA DILINDUNGI.</p>
+        <p>&copy; 2024 ABIB JAYA KONSTRUKSI. DATA DILINDUNGI. DIBUAT DENGAN PRESISI (KECUALI FOTO). </p>
 
         <a href="index.html" class="text-orange-safety hover:underline mt-2 inline-block">KEMBALI KE BERANDA</a>
 
@@ -295,331 +323,22 @@
 
         function portfolioApp() {
 
-            // DATABASE 70 FOTO (URL EKSTERNAL)
-
-            const projectImages = [
-
-                "https://i.ibb.co.com/gZKkVByj/IMG-20251204-183337.png",
-
-                "https://i.ibb.co.com/wF5Z56mZ/IMG-20251204-174026.jpg",
-
-                "https://i.ibb.co.com/7JYdL1hd/IMG-20251204-WA0040.jpg",
-
-                "https://i.ibb.co.com/xKVShLN4/IMG-20251204-WA0042.jpg",
-
-                "https://i.ibb.co.com/bMZkFw5N/IMG-20251206-WA0002.jpg",
-
-                "https://i.ibb.co.com/HffHLbzx/IMG-20251206-WA0001.jpg",
-
-                "https://i.ibb.co.com/fVBwjYDF/IMG-20251206-090624.png",
-
-                "https://i.ibb.co.com/qY6x2jcT/IMG-20251206-090403.png",
-
-                "https://i.ibb.co.com/PzhyRd71/IMG-20251206-090223.png",
-
-                "https://i.ibb.co.com/S4Jqm6jG/IMG-20251206-WA0005.jpg",
-
-                "https://i.ibb.co.com/n8brL6JY/IMG-20251206-WA0004.jpg",
-
-                "https://i.ibb.co.com/3y4md2ZG/IMG-20251206-WA0003.jpg",
-
-                "https://i.ibb.co.com/8Dv21SXm/IMG-20230105-155603-1.jpg",
-
-                "https://i.ibb.co.com/yFDxQ7jC/IMG-20240909-123814.jpg",
-
-                "https://i.ibb.co.com/1JvqqgL4/IMG-20240503-111325.jpg",
-
-                "https://i.ibb.co.com/Q76c6tcV/IMG-20221204-181018.jpg",
-
-                "https://i.ibb.co.com/0RQnKNVX/IMG-20210207-120006.jpg",
-
-                "https://i.ibb.co.com/Nnd35y05/IMG-20220423-141932.jpg",
-
-                "https://i.ibb.co.com/Z6mZmy1V/IMG-20220922-153425.jpg",
-
-                "https://i.ibb.co.com/wNLq27xQ/IMG-20250703-155511.jpg",
-
-                "https://i.ibb.co.com/BVY2gfqs/IMG-20201120-153403.jpg",
-
-                "https://i.ibb.co.com/4ZX72H2p/IMG-20230913-124509.jpg",
-
-                "https://i.ibb.co.com/m5BB5KsB/IMG-20250731-094952.jpg",
-
-                "https://i.ibb.co.com/rRYCHs6M/IMG-20230902-164608.jpg",
-
-                "https://i.ibb.co.com/7dbdhCdX/IMG-20231213-114632.jpg",
-
-                "https://i.ibb.co.com/kgWLdHdj/IMG-20220813-144318.jpg",
-
-                "https://i.ibb.co.com/spgz8ZhG/IMG-20240814-155542.jpg",
-
-                "https://i.ibb.co.com/yFJ4jK3D/IMG-20171105-130347.jpg",
-
-                "https://i.ibb.co.com/Lh5YC9mL/IMG-20221113-175526.jpg",
-
-                "https://i.ibb.co.com/HLGmmFJy/IMG-20220405-155037.jpg",
-
-                "https://i.ibb.co.com/nMP8MDXj/IMG-20221218-091343.jpg",
-
-                "https://i.ibb.co.com/Tqt0r3Q8/IMG-20251120-140207.jpg",
-
-                "https://i.ibb.co.com/PkN30y0/IMG-20230819-172943.jpg",
-
-                "https://i.ibb.co.com/20jgpc2j/IMG-20240828-114358.jpg",
-
-                "https://i.ibb.co.com/8g0JJzzq/IMG-20221211-121414.jpg",
-
-                "https://i.ibb.co.com/FqNDdBQ4/IMG-20221016-155933.jpg",
-
-                "https://i.ibb.co.com/tpYwpTnV/IMG-20240127-143253.jpg",
-
-                "https://i.ibb.co.com/9HpdVs5F/IMG-20251008-070811.jpg",
-
-                "https://i.ibb.co.com/4g85nW5M/IMG-20221013-133948.jpg",
-
-                "https://i.ibb.co.com/rKxNnMLH/IMG-20210210-094100.jpg",
-
-                "https://i.ibb.co.com/7txTPfHx/IMG-20190128-114528.jpg",
-
-                "https://i.ibb.co.com/4w3MFxsH/IMG-20230130-120345.jpg",
-
-                "https://i.ibb.co.com/RkGVpn40/IMG-20230331-163338.jpg",
-
-                "https://i.ibb.co.com/Kjm6p01J/IMG-20250113-133006.jpg",
-
-                "https://i.ibb.co.com/67YtnYxD/IMG-20220615-172749.jpg",
-
-                "https://i.ibb.co.com/JjDWGM1V/IMG-20240803-170645.jpg",
-
-                "https://i.ibb.co.com/CKH1n65f/IMG-20250603-110405.jpg",
-
-                "https://i.ibb.co.com/WNLH8wqm/IMG-20230819-172908.jpg",
-
-                "https://i.ibb.co.com/xSqs6zpJ/IMG-20250114-161406.jpg",
-
-                "https://i.ibb.co.com/mCf4kw6D/IMG-20230125-131913.jpg",
-
-                "https://i.ibb.co.com/PsLM55XW/IMG-20230415-084244.jpg",
-
-                "https://i.ibb.co.com/tk6xTj4/IMG-20241116-131249.jpg",
-
-                "https://i.ibb.co.com/9kPRxZbP/IMG-20220408-152513.jpg",
-
-                "https://i.ibb.co.com/RTNTcjQ1/IMG-20250912-045320.jpg",
-
-                "https://i.ibb.co.com/TB7ntnSj/IMG-20220626-104252.jpg",
-
-                "https://i.ibb.co.com/VccvPgnw/IMG-20241015-161515.jpg",
-
-                "https://i.ibb.co.com/Fk5fKxHw/IMG-20220916-101142.jpg",
-
-                "https://i.ibb.co.com/ynpnzPhh/IMG-20251031-151243.jpg",
-
-                "https://i.ibb.co.com/d03s2CyH/IMG-20221020-150319.jpg",
-
-                "https://i.ibb.co.com/NghL91PS/IMG-20230729-142639.jpg",
-
-                "https://i.ibb.co.com/V08XFZK4/IMG-20240614-161854.jpg",
-
-                "https://i.ibb.co.com/KpjKbGKx/IMG-20240316-152718.jpg",
-
-                "https://i.ibb.co.com/23c6JzVp/IMG-20250417-165542.jpg",
-
-                "https://i.ibb.co.com/Zpj7xFZX/IMG-20230729-142121.jpg",
-
-                "https://i.ibb.co.com/G46L3Lkz/IMG-20240723-085628.jpg",
-
-                "https://i.ibb.co.com/V09209m9/IMG-20250827-110645.jpg",
-
-                "https://i.ibb.co.com/0jY44sLQ/IMG-20220316-154039.jpg",
-
-                "https://i.ibb.co.com/prvCwRQM/IMG-20250409-145419.jpg",
-
-                "https://i.ibb.co.com/jv5VnYjJ/IMG-20220317-134347-1.jpg",
-
-                "https://i.ibb.co.com/dJmPFjSv/IMG-20180515-074639.jpg",
-
-                "https://i.ibb.co.com/QvQ2LDct/IMG-20240210-122216.jpg",
-
-                "https://i.ibb.co.com/WvP5R1Sh/IMG-20220813-131935.jpg",
-
-                "https://i.ibb.co.com/1JjGV67D/IMG-20220908-172108.jpg",
-
-                "https://i.ibb.co.com/1fS2LX8k/IMG-20240731-120908.jpg",
-
-                "https://i.ibb.co.com/bjnjDgVf/IMG-20220626-104224.jpg",
-
-                "https://i.ibb.co.com/PLfM9M7/IMG-20240114-090656.jpg",
-
-                "https://i.ibb.co.com/wTpLWSn/IMG-20210801-124343.jpg",
-
-                "https://i.ibb.co.com/Y7Tqwg9s/IMG-20220916-094159.jpg",
-
-                "https://i.ibb.co.com/Jj1Szp5M/IMG-20230511-161841.jpg",
-
-                "https://i.ibb.co.com/fd0H7XtT/IMG-20181112-111947.jpg",
-
-                "https://i.ibb.co.com/CKv1D6zY/IMG-20240107-160032-1.jpg",
-
-                "https://i.ibb.co.com/99KJWS7x/IMG-20220917-130508.jpg",
-
-                "https://i.ibb.co.com/wNh1VfwL/IMG-20220128-165451.jpg",
-
-                "https://i.ibb.co.com/cSjRTYJz/IMG-20220922-153313.jpg",
-
-                "https://i.ibb.co.com/fzpZKyXD/IMG-20240323-144112.jpg",
-
-                "https://i.ibb.co.com/Q7kdqm2t/IMG-20250425-034143.jpg",
-
-                "https://i.ibb.co.com/Q7k2NNYw/IMG-20230722-121709.jpg",
-
-                "https://i.ibb.co.com/zTP1TRrT/IMG-20220222-065831.jpg",
-
-                "https://i.ibb.co.com/tphthShD/IMG-20221106-183402.jpg",
-
-                "https://i.ibb.co.com/nMFCv49V/IMG-20250409-145358.jpg",
-
-                "https://i.ibb.co.com/wFSsNkkx/IMG-20230116-154548.jpg",
-
-                "https://i.ibb.co.com/YBnrd5nq/IMG-20220924-115115.jpg",
-
-                "https://i.ibb.co.com/nMzcTJsh/IMG-20220221-130056.jpg",
-
-                "https://i.ibb.co.com/LzS6gmYS/IMG-20220422-112000-1.jpg",
-
-                "https://i.ibb.co.com/RpkGbBs7/IMG-20230918-142510-1.jpg",
-
-                "https://i.ibb.co.com/5ggHdS7C/IMG-20200920-171706-1.jpg",
-
-                "https://i.ibb.co.com/bM5kD8Kf/IMG-20190326-132245.jpg",
-
-                "https://i.ibb.co.com/5Wh7CvdM/IMG-20240706-103904.jpg",
-
-                "https://i.ibb.co.com/ZprLxSCv/IMG-20220921-143733.jpg",
-
-                "https://i.ibb.co.com/gZPb1BML/IMG-20221104-153455-1.jpg",
-
-                "https://i.ibb.co.com/scqrJ0M/IMG-20221001-153134.jpg",
-
-                "https://i.ibb.co.com/4RbXCSq1/IMG-20210123-181622.jpg",
-
-                "https://i.ibb.co.com/jtcjtyB/IMG-20220201-111607.jpg",
-
-                "https://i.ibb.co.com/QvpCfb6b/IMG-20230731-123656.jpg",
-
-                "https://i.ibb.co.com/DHCGwpqy/IMG-20230212-131950.jpg",
-
-                "https://i.ibb.co.com/FLCn2kqj/IMG-20241125-072642.jpg",
-
-                "https://i.ibb.co.com/nqLnv66Y/IMG-20230222-125326.jpg",
-
-                "https://i.ibb.co.com/8nG48R46/IMG-20230731-123701.jpg",
-
-                "https://i.ibb.co.com/RTf1zt8R/IMG-20230819-173115-1.jpg",
-
-                "https://i.ibb.co.com/qLj3B6tv/IMG-20221222-155454.jpg",
-
-                "https://i.ibb.co.com/V09LGftp/IMG-20221202-171807.jpg",
-
-                "https://i.ibb.co.com/G3Q4JKdb/IMG-20241025-155429.jpg",
-
-                "https://i.ibb.co.com/k2vBrH3n/IMG-20221104-154346.jpg",
-
-                "https://i.ibb.co.com/8gCYNtLM/IMG-20220921-141726-1.jpg",
-
-                "https://i.ibb.co.com/SDFvH80H/IMG-20240513-061129.jpg",
-
-                "https://i.ibb.co.com/rR1GyzR9/IMG-20250605-164255.jpg",
-
-                "https://i.ibb.co.com/8DCrYkP9/IMG-20241015-161402.jpg",
-
-                "https://i.ibb.co.com/6q9mY8T/IMG-20241214-172255.jpg",
-
-                "https://i.ibb.co.com/pvgzrmW8/IMG-20230104-130040.jpg",
-
-                "https://i.ibb.co.com/ynjgP328/IMG-20221113-175602.jpg",
-
-                "https://i.ibb.co.com/jPcNZ4K2/IMG-20240611-163401.jpg",
-
-                "https://i.ibb.co.com/1GZCZ1MC/IMG-20230729-142403.jpg",
-
-                "https://i.ibb.co.com/4ZHBnRbd/IMG-20230113-151351-1.jpg",
-
-                "https://i.ibb.co.com/v6KvTBpP/IMG-20220421-110436-1.jpg",
-
-                "https://i.ibb.co.com/K4Wf24D/IMG-20230301-101225.jpg",
-
-                "https://i.ibb.co.com/fgkVp2M/IMG-20220323-170455.jpg",
-
-                "https://i.ibb.co.com/jvJRRMcN/IMG-20240828-114744.jpg",
-
-                "https://i.ibb.co.com/2Y3mrv53/IMG-20201019-164730.jpg",
-
-                "https://i.ibb.co.com/TqqvHfp6/IMG-20220305-162537-1.jpg",
-
-                "https://i.ibb.co.com/Rk6H3CcY/IMG-20220612-154110.jpg",
-
-                "https://i.ibb.co.com/wrJqhcJC/IMG-20230729-142534-1.jpg",
-
-                "https://i.ibb.co.com/XffG3y4L/IMG-20220111-161044.jpg",
-
-                "https://i.ibb.co.com/mrTFkd9j/IMG-20220326-131312.jpg",
-
-                "https://i.ibb.co.com/ynW7fJRn/IMG-20220713-132909.jpg",
-
-                "https://i.ibb.co.com/WpvpCPLb/IMG-20250916-170433.jpg",
-
-                "https://i.ibb.co.com/qMJwb02j/IMG-20221224-111140.jpg",
-
-                "https://i.ibb.co.com/7tG9VH87/IMG-20240814-155626.jpg",
-
-                "https://i.ibb.co.com/nNr8gb3s/IMG-20220921-142027-1.jpg",
-
-                "https://i.ibb.co.com/yndsZqyb/IMG-20230819-172956-1.jpg",
-
-                "https://i.ibb.co.com/mrGDB5ps/IMG-20240901-114407.jpg",
-
-                "https://i.ibb.co.com/nsSLts4S/IMG-20220310-112632-1.jpg",
-
-                "https://i.ibb.co.com/cchJQzSG/IMG-20221001-164409.jpg",
-
-                "https://i.ibb.co.com/ynGydgCY/IMG-20241214-121543.jpg",
-
-                "https://i.ibb.co.com/FbNpGH0k/IMG-20221102-170025.jpg",
-
-                "https://i.ibb.co.com/qYfW1Mh9/IMG-20220304-160808.jpg",
-
-                "https://i.ibb.co.com/gbBGqG27/IMG-20250212-152849.jpg",
-
-                "https://i.ibb.co.com/Lh87znGj/IMG-20250907-140551.jpg",
-
-                "https://i.ibb.co.com/nsgB9gHX/IMG-20230622-153737.jpg",
-
-                "https://i.ibb.co.com/60NwJ0X0/IMG-20220525-092858.jpg",
-
-                "https://i.ibb.co.com/LXqPQ77x/IMG-20220304-160707.jpg",
-
-                "https://i.ibb.co.com/nZ4JT4m/IMG-20250827-110655.jpg",
-
-                "https://i.ibb.co.com/01KfcBh/IMG-20221106-083902.jpg",
-
-                "https://i.ibb.co.com/93N0YYNn/IMG-20220612-154131.jpg",
-
-                "https://i.ibb.co.com/vxMRnyTk/IMG-20250527-174553.jpg",
-
-                "https://i.ibb.co.com/M5tMRQgJ/IMG-20251202-WA0041.jpg"
-
-            ];
-
+            // DATABASE 157 FOTO (URL DARI GITHUB PAGES)
+            // PERINGATAN KERAS: Penggunaan GitHub Pages untuk aset skala besar akan berdampak negatif pada kinerja dan latensi.
+
+            const projectImages = [];
+            for (let i = 1; i <= 157; i++) {
+                // Menggunakan skema URL baru sesuai permintaan
+                projectImages.push(`https://abibjayaid-commits.github.io/abib-jaya-assets/project-2-${i}.webp`);
+            }
             
-
             return {
 
-                items: projectImages, // Menggunakan array langsung
+                items: projectImages, // Menggunakan array yang dibuat
 
-                visibleCount: 20,
+                visibleCount: 20, // Jumlah awal yang ditampilkan
 
-                increment: 20,
+                increment: 20, // Jumlah penambahan saat "Load More"
 
                 modalOpen: false,
 
@@ -643,7 +362,7 @@
 
                 loadMore() { 
 
-                    this.visibleCount += this.increment; 
+                    this.visibleCount = Math.min(this.totalCount, this.visibleCount + this.increment); 
 
                 },
 
@@ -655,6 +374,8 @@
 
                     this.modalOpen = true;
 
+                    // Mengunci scroll saat modal terbuka
+
                     document.body.style.overflow = 'hidden';
 
                 },
@@ -662,6 +383,8 @@
                 closeModal() {
 
                     this.modalOpen = false;
+
+                    // Mengembalikan scroll 
 
                     document.body.style.overflow = 'auto';
 
@@ -671,6 +394,16 @@
 
         }
 
+        // Menambahkan event listener untuk menutup modal dengan tombol Escape
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.body.style.overflow === 'hidden') {
+                // Memanggil fungsi closeModal dari komponen Alpine.js jika tersedia
+                if (typeof window.portfolioApp().closeModal === 'function') {
+                    window.portfolioApp().closeModal();
+                }
+            }
+        });
     </script>
 
 </body>
