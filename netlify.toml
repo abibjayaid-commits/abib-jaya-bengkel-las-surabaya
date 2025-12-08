@@ -1,0 +1,15 @@
+# Simpan file ini dengan nama "netlify.toml" di root folder proyek Anda.
+# Tanpa file ini, browser akan memuat ulang gambar terus menerus.
+
+[[headers]]
+  # Terapkan aturan ini untuk semua file gambar
+  for = "/*.webp"
+  [headers.values]
+    # Cache selama 1 tahun (31536000 detik), immutable (tidak berubah)
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache standar untuk file lain (HTML, CSS, JS) - 1 hari
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
