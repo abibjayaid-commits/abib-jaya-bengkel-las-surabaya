@@ -34,12 +34,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'navy-deep': '#001F3F',      
+                        'navy-deep': '#001F3F',     
                         'navy-light': '#003366', 
-                        'orange-safety': '#FF4500',    
+                        'orange-safety': '#FF4500',   
                         'orange-dark': '#CC3700', 
                         'silver-metallic': '#D3D3D3',
-                        'dark-bg': '#111827',          
+                        'dark-bg': '#111827',         
                     },
                     fontFamily: {
                         mono: ['Oswald', 'sans-serif'],  
@@ -99,14 +99,39 @@
             } else if (category === 'Pagar') {
                 message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Pagar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Jenis Pagar (Hollow/Besi Tempa/Cutting Laser): ...";
             } else if (category === 'Railing') {
-                 message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Railing].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Lokasi (Tangga/Balkon) & Material (Stainless/Besi): ...";
+                   message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Railing].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Lokasi (Tangga/Balkon) & Material (Stainless/Besi): ...";
             } else if (category === 'Tangga Putar') {
-                 message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Tangga Putar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Tinggi Lantai ke Lantai: ...%0A4. Diameter Ruang yang Tersedia: ...";
+                   message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Tangga Putar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Tinggi Lantai ke Lantai: ...%0A4. Diameter Ruang yang Tersedia: ...";
             } else if (category === 'Proyek Khusus') {
-                 message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Konstruksi Baja Berat/Proyek Khusus].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Luas Bangunan (m2): ...%0A4. Penggunaan (Gudang/Pabrik/Mezzanine): ...";
+                   message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Konstruksi Baja Berat/Proyek Khusus].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Luas Bangunan (m2): ...%0A4. Penggunaan (Gudang/Pabrik/Mezzanine): ...";
             }
 
             return 'https://wa.me/6281216359499?text=' + message;
+        }
+
+        // Fungsi helper untuk menentukan rasio placeholder SVG
+        function getPlaceholderSize(category) {
+            switch (category) {
+                case 'Proyek Khusus':
+                case 'Kanopi':
+                    return { w: 800, h: 600 }; // 4:3
+                case 'Tangga Putar':
+                    return { w: 600, h: 800 }; // 9:16
+                default: // Pagar, Railing (16:9)
+                    return { w: 800, h: 450 }; // 16:9
+            }
+        }
+        
+        // Fungsi untuk membuat SVG Placeholder
+        function generateSvgPlaceholder(category) {
+            const size = getPlaceholderSize(category);
+            const w = size.w;
+            const h = size.h;
+            
+            // Base64-encoded SVG (font family mono = Oswald)
+            // Menggunakan ukuran W dan H yang sesuai dengan rasio container
+            const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="100%" height="100%" fill="#111827"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FF4500" font-family="Oswald, sans-serif" font-size="48" font-weight="bold">PROYEK Loading</text></svg>`;
+            return `data:image/svg+xml;base64,${btoa(svgContent)}`;
         }
     </script>
     
@@ -232,6 +257,56 @@
             border-bottom: none;
         }
 
+        /* --- START OF NEW PORTFOLIO STYLING & LOADING LOGIC --- */
+
+        .portfolio-item {
+            /* Styles for the project card border/shadow */
+            background-color: #111827;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            min-height: 100px; /* Ensure space during load */
+            /* Default aspect ratio 16:9 (for Pagar dan Railing) */
+            aspect-ratio: 16 / 9; 
+        }
+
+        .portfolio-item:hover {
+            border-color: #FF4500;
+            box-shadow: 0 10px 15px -3px rgba(255, 69, 0, 0.2);
+        }
+
+        /* CSS BARU: Aspect Ratio 4:3 untuk Proyek Khusus dan Kanopi */
+        .aspect-4-3 {
+            aspect-ratio: 4 / 3;
+        }
+        
+        /* CSS BARU: Aspect Ratio 9:16 untuk Tangga Putar */
+        .aspect-9-16 {
+            aspect-ratio: 9 / 16; /* Vertical, tall screen */
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%; 
+            object-fit: cover; /* Ini penting agar foto mengisi penuh container berapapun rasionya */
+            display: block;
+            transition: opacity 0.5s ease-in-out;
+            min-height: 100px;
+        }
+        
+        /* Image Loading States */
+        .img-loading {
+            opacity: 0;
+            /* min-height tidak lagi penting karena aspect-ratio sudah menangani tinggi container */
+        }
+        
+        .img-loaded {
+            opacity: 1;
+            min-height: auto;
+        }
+        /* --- END OF NEW PORTFOLIO STYLING & LOADING LOGIC --- */
+
     </style>
 </head>
 
@@ -240,14 +315,14 @@
     <!-- Floating CTA (WhatsApp & Phone) -->
     <div class="flex floating-cta-desktop">
         <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20serius%20ingin%20konsultasi%20proyek%20dan%20menolak%20buang%20waktu.%0A%0ABerikut%20data%20saya%3A%0A1.%20Nama%3A%20...%0A2.%20Lokasi%20Proyek%3A%20...%0A3.%20Jenis%20Pekerjaan%20(Pagar%2FKanopi%2FGudang)%3A%20...%0A4.%20Estimasi%20Ukuran%20(PxL)%3A%20...%0A%0AMohon%20dibalas%20dengan%20estimasi%20kasar%20atau%20jadwal%20survei." target="_blank"  
-           class="flex items-center justify-center rounded-full bg-orange-safety hover:bg-orange-700 text-navy-deep shadow-2xl transition duration-200 cta-glow"  
-           aria-label="Konsultasi Gratis via WhatsApp">
+            class="flex items-center justify-center rounded-full bg-orange-safety hover:bg-orange-700 text-navy-deep shadow-2xl transition duration-200 cta-glow"  
+            aria-label="Konsultasi Gratis via WhatsApp">
             <i class="fab fa-whatsapp text-4xl text-navy-deep"></i>
         </a>
 
         <a href="tel:+6281216359499"  
-           class="flex items-center justify-center rounded-full bg-navy-deep hover:bg-dark-bg text-white shadow-2xl transition duration-200 border-2 border-orange-safety"  
-           aria-label="Hubungi Kami via Telepon">
+            class="flex items-center justify-center rounded-full bg-navy-deep hover:bg-dark-bg text-white shadow-2xl transition duration-200 border-2 border-orange-safety"  
+            aria-label="Hubungi Kami via Telepon">
             <i class="fas fa-phone-alt text-3xl text-orange-safety"></i>
         </a>
     </div>
@@ -309,7 +384,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <p class="text-orange-safety font-bold mb-3 tracking-widest uppercase">TERUJI 20+ TAHUN | KONTRAKTOR BESI & BAJA PROFESIONAL</p>
                 <h1 class="font-mono text-5xl sm:text-7xl font-extrabold leading-tight mb-6 tracking-tighter">
-                    KONSTRUKSI BESI & BAJA <span class="text-orange-safety">KUALITAS NASIONAL</span>
+                    KONSTRUKSI BESI & BAJA <span class="text-orange-safety">BERKUALITAS</span>
                 </h1>
                 <p class="text-silver-metallic max-w-3xl mx-auto text-xl mb-10">
                     Kami menjamin kualitas struktural, fabrikasi presisi, dan desain Industrial Modern untuk proyek properti, gudang, dan infrastruktur Anda di seluruh Indonesia.
@@ -534,30 +609,46 @@
                 <div class="flex flex-wrap justify-center gap-2 mb-10">
                     <template x-for="cat in ['Proyek Khusus', 'Kanopi', 'Pagar', 'Railing', 'Tangga Putar']">
                         <button @click="activeFilter = cat"  
-                                :class="activeFilter === cat ? 'bg-orange-safety text-white border-orange-safety' : 'border-gray-600 text-gray-400 hover:border-white'"
-                                class="px-5 py-2 border font-bold uppercase text-sm transition-all skew-x-[-10deg]">
+                                 :class="activeFilter === cat ? 'bg-orange-safety text-white border-orange-safety' : 'border-gray-600 text-gray-400 hover:border-white'"
+                                 class="px-5 py-2 border font-bold uppercase text-sm transition-all skew-x-[-10deg]">
                             <span class="skew-x-[10deg] inline-block" x-text="cat"></span>
                         </button>
                     </template>
                 </div>
 
-                <!-- LIST FOTO - PRELOADED (ANTI LEMOT) -->
+                <!-- LIST FOTO - PERBAIKAN LOGIKA ASPEK RASIO -->
                 <div class="max-w-4xl mx-auto">
                     <template x-for="(img, index) in images" :key="index">
                         <!-- Tampilkan hanya jika kategori cocok -->
                         <div x-show="activeFilter === img.category"
-                             class="group relative bg-gray-800 cursor-pointer overflow-hidden transition duration-300 shadow-xl rounded-sm hover:-translate-y-2 hover:shadow-2xl"
+                             x-data="{ imgLoaded: false }"
+                             class="portfolio-item group relative cursor-pointer shadow-xl rounded-sm hover:-translate-y-2 hover:shadow-2xl mb-8"
+                             :class="{
+                                 'aspect-4-3': img.category === 'Proyek Khusus' || img.category === 'Kanopi',
+                                 'aspect-9-16': img.category === 'Tangga Putar'
+                                 // Pagar & Railing menggunakan default aspect-ratio: 16 / 9 dari .portfolio-item
+                             }"
                              @click="openModal(img)"
                              x-transition:enter="transition ease-out duration-300"
                              x-transition:enter-start="opacity-0 scale-95"
                              x-transition:enter-end="opacity-100 scale-100">
                             
-                            <!-- Tambahkan loading="lazy" di sini -->
-                            <img :src="img.src" 
+                            <!-- Loading Spinner (Visible when not loaded) -->
+                            <div x-show="!imgLoaded" class="absolute inset-0 flex items-center justify-center z-0 bg-gray-900">
+                                <i class="fas fa-hard-hat text-orange-safety animate-pulse text-3xl"></i>
+                            </div>
+
+                            <!-- Image: Menggunakan object-fit: cover untuk memenuhi container rasio yang ditentukan -->
+                            <img :src="img.src"  
                                  loading="lazy"
-                                 class="w-full h-auto transition duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                                 onerror="this.onerror=null;this.src='https://placehold.co/800x600/333/FFF?text=Foto+Tidak+Tersedia';">
+                                 decoding="async"
+                                 :alt="img.alt"
+                                 class="project-img w-full transition duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                                 :class="imgLoaded ? 'img-loaded' : 'img-loading'"
+                                 @load="imgLoaded = true"
+                                 :onerror="'this.onerror=null; this.src=\'' + generateSvgPlaceholder(img.category) + '\'; this.classList.remove(\'img-loading\'); this.classList.add(\'img-loaded\');'">
                             
+                            <!-- Overlay -->
                             <div class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300">
                                 <div class="text-center">
                                     <span class="text-orange-safety font-bold uppercase tracking-widest text-sm mb-1 block">Lihat Detail</span>
@@ -782,8 +873,8 @@
                     <h4 class="font-mono text-lg font-bold mb-4">Temukan Bengkel Kami</h4>
                     <a href="https://www.google.com/maps/search/?api=1&query=Bengkel+Las+Abib+Jaya+Surabaya" target="_blank" class="block group relative overflow-hidden bg-gray-800 h-32 rounded-sm mb-4 border-4 border-gray-700 hover:border-orange-safety transition duration-300 shadow-lg">
                         <img src="https://placehold.co/400x200/222/666?text=MAP+VIEW"
-                                     loading="lazy" <!-- Tambahkan loading="lazy" di sini -->
-                                     class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Peta Lokasi Bengkel Surabaya">
+                                         loading="lazy" <!-- Tambahkan loading="lazy" di sini -->
+                                         class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Peta Lokasi Bengkel Surabaya">
                         
                         <div class="absolute inset-0 flex flex-col items-center justify-center z-10 p-2">
                             <div class="w-10 h-10 bg-orange-safety rounded-full flex items-center justify-center mb-1 shadow-lg group-hover:scale-110 transition">
