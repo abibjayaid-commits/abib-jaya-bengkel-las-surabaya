@@ -17,14 +17,14 @@
             theme: {
                 extend: {
                     colors: {
-                        'navy-deep': '#001F3F',       
+                        'navy-deep': '#001F3F',      
                         'navy-light': '#003366', 
-                        'orange-safety': '#FF4500',   
-                        'dark-bg': '#0f172a',         
+                        'orange-safety': '#FF4500',    
+                        'dark-bg': '#0f172a',        
                         'silver-metallic': '#D3D3D3',
                     },
                     fontFamily: {
-                        mono: ['Oswald', 'sans-serif'], 
+                        mono: ['Oswald', 'sans-serif'],  
                         sans: ['Open Sans', 'sans-serif'],  
                     }
                 }
@@ -50,7 +50,7 @@
             /* HACK INTI: Mematikan line-height untuk membunuh "ghost space" */
             line-height: 0;
             /* Mencegah gap horizontal aneh */
-            font-size: 0; 
+            font-size: 0;  
         }
         @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
         @media (min-width: 1024px) { .masonry-grid { column-count: 4; } }
@@ -90,7 +90,7 @@
 
         .project-img {
             width: 100%;
-            height: auto; 
+            height: auto;  
             display: block; /* Wajib block agar tidak ada gap bawah di dalam div */
             transition: opacity 0.5s ease-in-out;
             /* Aspect ratio based placeholder handling */
@@ -99,7 +99,7 @@
         
         .img-loading {
             opacity: 0;
-            min-height: 250px; 
+            min-height: 250px;  
         }
         
         .img-loaded {
@@ -146,6 +146,11 @@
                          x-data="{ imgLoaded: false }"
                          @click="openModal(item)">
                         
+                        <!-- BLOCK NOMOR FOTO LAMA (DIHAPUS) -->
+                        <!-- <span class="absolute top-2 right-2 z-10 bg-navy-deep/80 text-orange-safety font-mono text-xs font-bold px-3 py-1 rounded-full border-2 border-orange-safety/50 transition-all group-hover:bg-orange-safety group-hover:text-navy-deep group-hover:scale-105 shadow-lg">
+                            No. <span x-text="index + 1"></span>
+                        </span> -->
+
                         <img :src="item" 
                              loading="lazy" 
                              decoding="async"
@@ -208,8 +213,14 @@
         function portfolioApp() {
             // DATABASE URL
             const allImages = [];
+            // Daftar nomor urut foto (1-based index) yang HARUS DIHAPUS dari galeri.
+            const excludeIndices = [67, 156, 157, 94, 128, 74]; 
+
+            // Loop dari 1 sampai 157, hanya tambahkan yang TIDAK ADA di daftar pengecualian.
             for (let i = 1; i <= 157; i++) {
-                allImages.push(`https://abibjayaid-commits.github.io/abib-jaya-assets/project-2-${i}.webp`);
+                if (!excludeIndices.includes(i)) {
+                    allImages.push(`https://abibjayaid-commits.github.io/abib-jaya-assets/project-2-${i}.webp`);
+                }
             }
             
             return {
