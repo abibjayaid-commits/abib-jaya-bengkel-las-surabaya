@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- GOOGLE VERIFICATION TAG ADDED HERE -->
+    <!-- GOOGLE VERIFICATION TAG -->
     <meta name="google-site-verification" content="wqd8xN_Am40ZybZ7bkUXpVnk6I9uPyKjZRZi3JOUfKk" />
     
-    <!-- ANTI-DARK MODE SHIELD (VERSI STABIL) -->
-    <!-- Mencegah inversi warna tanpa merusak layout position:fixed -->
+    <!-- ANTI-DARK MODE SHIELD -->
     <meta name="color-scheme" content="light only">
     <meta name="supported-color-schemes" content="light">
     <meta name="theme-color" content="#ffffff">
@@ -22,24 +21,37 @@
     
     <title>Abib Jaya | Bengkel Las Konstruksi Besi & Baja Berkualitas (Layanan Nasional)</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- PRECONNECT UNTUK PERFORMA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- CSS LOADING OPTIMIZATION -->
+    <!-- Font Awesome (Preload style first to avoid render blocking if possible, but CDN link is standard) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
     
+    <!-- FIX: Tambahkan display=swap untuk mencegah FOIT (Flash of Invisible Text) -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
+    <!-- TAILWIND (Note: Untuk production sesungguhnya, gunakan build process, bukan CDN ini karena CDN memblokir render) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- ALPINE JS (Defer attributes added) -->
     <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'navy-deep': '#001F3F',     
+                        'navy-deep': '#001F3F',      
                         'navy-light': '#003366', 
-                        'orange-safety': '#FF4500',   
+                        'orange-safety': '#FF4500',    
                         'orange-dark': '#CC3700', 
                         'silver-metallic': '#D3D3D3',
-                        'dark-bg': '#111827',         
+                        'dark-bg': '#111827',          
                     },
                     fontFamily: {
                         mono: ['Oswald', 'sans-serif'],  
@@ -51,125 +63,37 @@
         }
     </script>
     
-    <script>
-        // Data Portofolio di-rotasi KATEGORINYA sesuai permintaan user:
-        // Tangga Putar (Content: project-1-1) pindah ke Kanopi
-        // Kanopi (Content: project-1-3) pindah ke Proyek Khusus
-        // Proyek Khusus (Content: project-1-5) pindah ke Pagar
-        // Pagar (Content: project-1-2) pindah ke Tangga Putar
-        const PORTFOLIO_IMAGES = [
-            // Index 0: Content Asli adalah Kanopi (project-1-3), sekarang di bawah kategori 'Proyek Khusus'
-            { 
-                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-3.webp', 
-                alt: 'Kanopi Atap Kaca Tempered dengan Struktur Industrial', 
-                category: 'Proyek Khusus' 
-            },
-            // Index 1: Content Asli adalah Tangga Putar (project-1-1), sekarang di bawah kategori 'Kanopi'
-            { 
-                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-1.webp', 
-                alt: 'Tangga Putar Minimalis Besi Tempa Modern', 
-                category: 'Kanopi' 
-            },
-            // Index 2: Content Asli adalah Baja Berat/Proyek Khusus (project-1-5), sekarang di bawah kategori 'Pagar'
-            { 
-                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-5.webp', 
-                alt: 'Konstruksi Struktur Baja Berat WF / H-Beam Gudang', 
-                category: 'Pagar' 
-            },
-            // Index 3: Railing (project-1-4) - Tidak diubah, tetap di bawah kategori 'Railing'
-            { 
-                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-4.webp', 
-                alt: 'Railing Balkon Stainless Steel dan Kaca Premium', 
-                category: 'Railing'
-            },
-            // Index 4: Content Asli adalah Pagar (project-1-2), sekarang di bawah kategori 'Tangga Putar'
-            { 
-                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-2.webp', 
-                alt: 'Pagar Cutting Laser Motif Geometris Hollow Galvanis', 
-                category: 'Tangga Putar'
-            }
-        ];
-
-        function generateWaLink(category) {
-            let message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [" + category + "].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Material Utama: ...";
-
-            // Tambahkan pertanyaan spesifik berdasarkan kategori untuk menyaring niat
-            if (category === 'Kanopi') {
-                message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Kanopi].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Atap (Kaca/Alderon/Spandek/Lainnya): ...";
-            } else if (category === 'Pagar') {
-                message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Pagar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Jenis Pagar (Hollow/Besi Tempa/Cutting Laser): ...";
-            } else if (category === 'Railing') {
-                   message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Railing].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Lokasi (Tangga/Balkon) & Material (Stainless/Besi): ...";
-            } else if (category === 'Tangga Putar') {
-                   message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Tangga Putar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Tinggi Lantai ke Lantai: ...%0A4. Diameter Ruang yang Tersedia: ...";
-            } else if (category === 'Proyek Khusus') {
-                   message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Konstruksi Baja Berat/Proyek Khusus].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Luas Bangunan (m2): ...%0A4. Penggunaan (Gudang/Pabrik/Mezzanine): ...";
-            }
-
-            return 'https://wa.me/6281216359499?text=' + message;
-        }
-
-        // Fungsi helper untuk menentukan rasio placeholder SVG
-        function getPlaceholderSize(category) {
-            switch (category) {
-                case 'Proyek Khusus':
-                case 'Kanopi':
-                    return { w: 800, h: 600 }; // 4:3
-                case 'Tangga Putar':
-                    return { w: 600, h: 800 }; // 9:16
-                default: // Pagar, Railing (16:9)
-                    return { w: 800, h: 450 }; // 16:9
-            }
-        }
-        
-        // Fungsi untuk membuat SVG Placeholder
-        function generateSvgPlaceholder(category) {
-            const size = getPlaceholderSize(category);
-            const w = size.w;
-            const h = size.h;
-            
-            // Base64-encoded SVG (font family mono = Oswald)
-            // Menggunakan ukuran W dan H yang sesuai dengan rasio container
-            const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="100%" height="100%" fill="#111827"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FF4500" font-family="Oswald, sans-serif" font-size="48" font-weight="bold">PROYEK Loading</text></svg>`;
-            return `data:image/svg+xml;base64,${btoa(svgContent)}`;
-        }
-    </script>
-    
     <style>
-        /* CSS Dasar & Solusi Anti Dark Mode yang LEBIH AMAN */
-        
-        /* 1. Paksa Root ke Putih dengan Prioritas Tertinggi */
+        /* CSS Dasar & Solusi Anti Dark Mode */
         :where(html, body) {
             background-color: #ffffff !important;
             color: #1f2937 !important;
             color-scheme: light !important;
         }
 
-        /* 2. HAPUS filter: invert(0) yang merusak posisi Modal */
         body {
             font-family: 'Open Sans', sans-serif;
-            /* Filter dihapus karena membuat bug pada position: fixed di mobile */
             background-color: #ffffff;
+            /* FIX: Menghindari Layout Shift dengan mendefinisikan line-height default */
+            line-height: 1.5;
         }
 
-        /* 3. Lindungi elemen gambar dan media dari filter inversi (jika browser memaksa) */
         img, video, iframe, canvas, svg {
             mix-blend-mode: normal !important;
+            /* FIX: Mencegah layout shift pada gambar yang belum load */
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
-        /* 4. Paksa Section yang seharusnya putih agar tetap putih */
-        .bg-white, section.bg-white {
-            background-color: #ffffff !important;
-        }
-        
-        /* 5. Pastikan background gelap tetap gelap */
+        .bg-white, section.bg-white { background-color: #ffffff !important; }
         .bg-navy-deep { background-color: #001F3F !important; }
         .bg-dark-bg { background-color: #111827 !important; }
         .bg-black { background-color: #000000 !important; }
 
-        /* Style untuk Hero Section agar terlihat kokoh (CSS Texture) */
+        /* Hero Background */
         .hero-bg {
-            background-color: '#001F3F';
+            background-color: #001F3F; /* Fallback color */
             background-image: linear-gradient(
                 45deg,  
                 rgba(255, 255, 255, 0.08) 10%,  
@@ -185,7 +109,6 @@
             background-position: center;
         }
 
-        /* Hover effect untuk Service Cards */
         .service-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             cursor: pointer;
@@ -197,25 +120,12 @@
             border-color: #FF4500;
         }
 
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #FF4500;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #2e3b4a;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #FF4500; border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: #2e3b4a; }
 
-        .modal-open {
-            overflow: hidden;
-        }
-
-        [x-cloak] {
-            display: none !important;
-        }
+        .modal-open { overflow: hidden; }
+        [x-cloak] { display: none !important; }
         
         .floating-cta-desktop {
             position: fixed;
@@ -226,48 +136,28 @@
             flex-direction: column;
             gap: 15px;  
         }
-        .floating-cta-desktop a {
-            width: 70px;  
-            height: 70px;  
-        }
+        .floating-cta-desktop a { width: 70px; height: 70px; }
         
         @media (max-width: 639px) {  
-            .floating-cta-desktop {
-                bottom: 15px;  
-                right: 15px;
-                gap: 10px;
-            }
-            .floating-cta-desktop a {
-                width: 60px;  
-                height: 60px;  
-            }
+            .floating-cta-desktop { bottom: 15px; right: 15px; gap: 10px; }
+            .floating-cta-desktop a { width: 60px; height: 60px; }
         }
         
-        .cta-glow {
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.7), 0 0 30px rgba(255, 69, 0, 0.5);
-        }
-        .cta-glow:hover {
-            box-shadow: 0 0 5px rgba(255, 69, 0, 1), 0 0 40px rgba(255, 69, 0, 0.8);
-        }
+        .cta-glow { box-shadow: 0 0 15px rgba(255, 69, 0, 0.7), 0 0 30px rgba(255, 69, 0, 0.5); }
+        .cta-glow:hover { box-shadow: 0 0 5px rgba(255, 69, 0, 1), 0 0 40px rgba(255, 69, 0, 0.8); }
         
-        .faq-item {
-            border-bottom: 2px solid #e5e7eb;
-        }
-        .faq-item:last-child {
-            border-bottom: none;
-        }
+        .faq-item { border-bottom: 2px solid #e5e7eb; }
+        .faq-item:last-child { border-bottom: none; }
 
-        /* --- START OF NEW PORTFOLIO STYLING & LOADING LOGIC --- */
-
+        /* PORTFOLIO OPTIMIZATION */
         .portfolio-item {
-            /* Styles for the project card border/shadow */
             background-color: #111827;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #374151;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            min-height: 100px; /* Ensure space during load */
-            /* Default aspect ratio 16:9 (for Pagar dan Railing) */
+            min-height: 100px; 
+            /* Default aspect ratio 16:9 */
             aspect-ratio: 16 / 9; 
         }
 
@@ -276,43 +166,26 @@
             box-shadow: 0 10px 15px -3px rgba(255, 69, 0, 0.2);
         }
 
-        /* CSS BARU: Aspect Ratio 4:3 untuk Proyek Khusus dan Kanopi */
-        .aspect-4-3 {
-            aspect-ratio: 4 / 3;
-        }
-        
-        /* CSS BARU: Aspect Ratio 9:16 untuk Tangga Putar */
-        .aspect-9-16 {
-            aspect-ratio: 9 / 16; /* Vertical, tall screen */
-        }
+        .aspect-4-3 { aspect-ratio: 4 / 3; }
+        .aspect-9-16 { aspect-ratio: 9 / 16; }
 
         .project-img {
             width: 100%;
             height: 100%; 
-            object-fit: cover; /* Ini penting agar foto mengisi penuh container berapapun rasionya */
+            object-fit: cover; 
             display: block;
             transition: opacity 0.5s ease-in-out;
             min-height: 100px;
         }
         
-        /* Image Loading States */
-        .img-loading {
-            opacity: 0;
-            /* min-height tidak lagi penting karena aspect-ratio sudah menangani tinggi container */
-        }
-        
-        .img-loaded {
-            opacity: 1;
-            min-height: auto;
-        }
-        /* --- END OF NEW PORTFOLIO STYLING & LOADING LOGIC --- */
-
+        .img-loading { opacity: 0; }
+        .img-loaded { opacity: 1; min-height: auto; }
     </style>
 </head>
 
 <body class="antialiased min-h-screen bg-white text-gray-900"> 
 
-    <!-- Floating CTA (WhatsApp & Phone) -->
+    <!-- Floating CTA -->
     <div class="flex floating-cta-desktop">
         <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20serius%20ingin%20konsultasi%20proyek%20dan%20menolak%20buang%20waktu.%0A%0ABerikut%20data%20saya%3A%0A1.%20Nama%3A%20...%0A2.%20Lokasi%20Proyek%3A%20...%0A3.%20Jenis%20Pekerjaan%20(Pagar%2FKanopi%2FGudang)%3A%20...%0A4.%20Estimasi%20Ukuran%20(PxL)%3A%20...%0A%0AMohon%20dibalas%20dengan%20estimasi%20kasar%20atau%20jadwal%20survei." target="_blank"  
             class="flex items-center justify-center rounded-full bg-orange-safety hover:bg-orange-700 text-navy-deep shadow-2xl transition duration-200 cta-glow"  
@@ -338,7 +211,6 @@
                     ABIB <span class="text-white">JAYA</span>
                 </a>
 
-                <!-- MENU NAVIGASI: Spasi disesuaikan untuk layar MD (tablet) agar tidak berantakan -->
                 <nav class="hidden md:flex space-x-3 lg:space-x-5 items-center font-semibold text-sm">
                     <a href="#tentangkami" class="hover:text-orange-safety transition duration-150">Tentang Kami</a>
                     <a href="#layanan" class="hover:text-orange-safety transition duration-150">Layanan</a>
@@ -371,9 +243,6 @@
                 <a href="#portofolio" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Portofolio</a>
                 <a href="#faq" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">FAQ</a>  
                 <a href="#kontak" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Kontak</a>
-                <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20ingin%20jadwal%20survei%20untuk%20proyek%20konstruksi.%0A%0ANama%3A%20...%0ALokasi%3A%20...%0AJenis%20Kerja%3A%20..." target="_blank" class="block px-3 py-2 text-center rounded-sm bg-orange-safety text-navy-deep font-bold mt-4 hover:bg-orange-700 hover:text-white">
-                    <i class="fab fa-whatsapp mr-2"></i> KONSULTASI
-                </a>
             </div>
         </div>
     </header>
@@ -383,6 +252,7 @@
         <section class="hero-bg text-white pt-24 pb-20 sm:pt-32 sm:pb-24 border-b-8 border-orange-safety">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <p class="text-orange-safety font-bold mb-3 tracking-widest uppercase">TERUJI 20+ TAHUN | KONTRAKTOR BESI & BAJA PROFESIONAL</p>
+                <!-- H1: Heading Utama -->
                 <h1 class="font-mono text-5xl sm:text-7xl font-extrabold leading-tight mb-6 tracking-tighter">
                     KONSTRUKSI BESI & BAJA <span class="text-orange-safety">BERKUALITAS</span>
                 </h1>
@@ -425,6 +295,7 @@
                 <div class="flex flex-wrap items-center">
                     <div class="w-full lg:pr-10 mb-8 lg:mb-0 max-w-4xl mx-auto">  
                         <span class="text-orange-safety font-bold uppercase tracking-widest block mb-2 text-center lg:text-left">INTEGRITAS FABRIKASI</span>
+                        <!-- H2: Sub Judul -->
                         <h2 class="font-mono text-4xl sm:text-5xl font-extrabold mb-6 text-navy-deep text-center lg:text-left tracking-tight">
                             Garansi Adalah 'Plan B'.<br>Kualitas Kami Adalah 'Plan A'.
                         </h2>
@@ -465,25 +336,25 @@
                     <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card">
                         <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">1</div>
                         <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">DESIGN & SURVEY</h3>
-                        <p class="text-gray-600 text-sm">Survei lokasi (Gratis Jatim, Luar Jatim dikenakan biaya), konsultasi teknis, dan finalisasi gambar kerja (shop drawing) yang presisi.</p>
+                        <p class="text-gray-700 text-sm">Survei lokasi (Gratis Jatim, Luar Jatim dikenakan biaya), konsultasi teknis, dan finalisasi gambar kerja (shop drawing) yang presisi.</p>
                     </div>
                     
                     <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card">
                         <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">2</div>
                         <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">FABRIKASI BENGKEL</h3>
-                        <p class="text-gray-600 text-sm">Pemotongan, perakitan, dan pengelasan (MIG/SMAW) oleh tim bersertifikasi yang diawasi QC ketat.</p>
+                        <p class="text-gray-700 text-sm">Pemotongan, perakitan, dan pengelasan (MIG/SMAW) oleh tim bersertifikasi yang diawasi QC ketat.</p>
                     </div>
                     
                     <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card">
                         <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">3</div>
                         <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">FINISHING & COATING</h3>
-                        <p class="text-gray-600 text-sm">Aplikasi lapisan dasar Epoxy (daya rekat tinggi & anti-karat) diikuti pengecatan Duco berkualitas berlapis, memastikan ketahanan korosi jangka panjang.</p>
+                        <p class="text-gray-700 text-sm">Aplikasi lapisan dasar Epoxy (daya rekat tinggi & anti-karat) diikuti pengecatan Duco berkualitas berlapis, memastikan ketahanan korosi jangka panjang.</p>
                     </div>
                     
                     <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card">
                         <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">4</div>
                         <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">DELIVERY & INSTALLASI</h3>
-                        <p class="text-gray-600 text-sm">Instalasi di lokasi proyek Anda secara profesional, aman (K3), rapi, dan sesuai dengan target waktu yang disepakati.</p>
+                        <p class="text-gray-700 text-sm">Instalasi di lokasi proyek Anda secara profesional, aman (K3), rapi, dan sesuai dengan target waktu yang disepakati.</p>
                     </div>
                     
                 </div>
@@ -503,42 +374,41 @@
                 <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">Kami mengkhususkan diri pada hasil akhir yang kuat, tahan lama, dan berestetika Industrial Modern untuk berbagai kebutuhan proyek.</p>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- FIX: Menggelapkan text-gray-500 menjadi text-gray-700 untuk kontras -->
                     <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center">
                         <i class="fas fa-umbrella text-4xl text-orange-safety mb-4"></i>
                         <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Canopy</h3>
-                        <p class="text-sm text-gray-500">Kaca Tempered, Alderon, Spandek. Struktur dirancang untuk Durabilitas Maksimum.</p>
+                        <p class="text-sm text-gray-700">Kaca Tempered, Alderon, Spandek. Struktur dirancang untuk Durabilitas Maksimum.</p>
                     </div>
                     <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center">
                         <i class="fas fa-border-all text-4xl text-orange-safety mb-4"></i>
                         <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Pagar Minimalis</h3>
-                        <p class="text-sm text-gray-500">Pagar dorong/lipat hollow galvanis, anti karat dan modern.</p>
+                        <p class="text-sm text-gray-700">Pagar dorong/lipat hollow galvanis, anti karat dan modern.</p>
                     </div>
-                    <!-- New Service: Baja Ringan -->
                     <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center">
                         <i class="fas fa-home text-4xl text-orange-safety mb-4"></i>
                         <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Konstruksi Baja Ringan</h3>
-                        <p class="text-sm text-gray-500">Rangka atap & struktur bangunan ringan. Presisi, cepat, dan ekonomis.</p>
+                        <p class="text-sm text-gray-700">Rangka atap & struktur bangunan ringan. Presisi, cepat, dan ekonomis.</p>
                     </div>
-                    <!-- Existing Service: Baja Berat -->
                     <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center">
                         <i class="fas fa-warehouse text-4xl text-orange-safety mb-4"></i>
                         <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Konstruksi Baja Berat</h3>
-                        <p class="text-sm text-gray-500">Besi Berat WF / H-Beam untuk gudang, pabrik, atau ruko.</p>
+                        <p class="text-sm text-gray-700">Besi Berat WF / H-Beam untuk gudang, pabrik, atau ruko.</p>
                     </div>
                     <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center">
                         <i class="fas fa-layer-group text-4xl text-orange-safety mb-4"></i>
                         <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Railing Tangga/Balkon</h3>
-                        <p class="text-sm text-gray-500">Stainless steel, tempered glass, atau besi modern.</p>
+                        <p class="text-sm text-gray-700">Stainless steel, tempered glass, atau besi modern.</p>
                     </div>
                     <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center">
                         <i class="fas fa-crown text-4xl text-orange-safety mb-4"></i>
                         <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Besi Tempa Klasik</h3>
-                        <p class="text-sm text-gray-500">Pagar, tralis, & railing ornamen kelas premium.</p>
+                        <p class="text-sm text-gray-700">Pagar, tralis, & railing ornamen kelas premium.</p>
                     </div>
                     <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center">
                         <i class="fas fa-circle-notch text-4xl text-orange-safety mb-4"></i>
                         <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Tangga Putar</h3>
-                        <p class="text-sm text-gray-500">Desain ergonomis, konstruksi besi berkualitas untuk keamanan maksimal dan efisiensi ruang.</p>
+                        <p class="text-sm text-gray-700">Desain ergonomis, konstruksi besi berkualitas untuk keamanan maksimal dan efisiensi ruang.</p>
                     </div>
                       <a href="https://wa.me/6281216359499?text=Saya%20punya%20desain%20sendiri%20(Custom)%20dan%20ingin%20estimasi%20biaya.%0A%0AJenis%20Barang%3A%20...%0AMaterial%20yg%20diinginkan%3A%20...%0A(Saya%20akan%20kirim%20foto%20referensi%20setelah%20ini)" target="_blank" class="service-card p-6 bg-orange-safety rounded-sm border-2 border-orange-700 shadow-xl flex flex-col items-center justify-center text-center text-navy-deep hover:bg-orange-700 hover:text-white transition duration-300">
                         <i class="fas fa-hammer text-4xl mb-4"></i>
@@ -555,28 +425,27 @@
                         <div class="flex flex-col items-center">
                             <i class="fas fa-weight-hanging text-4xl text-navy-deep mb-2"></i>
                             <p class="font-semibold text-sm font-mono text-navy-deep">Baja Berat WF / H-Beam</p>
-                            <p class="text-xs text-gray-500">Struktural Berkualitas</p>
+                            <p class="text-xs text-gray-600">Struktural Berkualitas</p>
                         </div>
                         <div class="flex flex-col items-center">
                             <i class="fas fa-cubes text-4xl text-navy-deep mb-2"></i>
                             <p class="font-semibold text-sm font-mono text-navy-deep">Hollow Galvanis/Galvalum</p>
-                            <p class="text-xs text-gray-500">Anti Karat (Zinc Coated)</p>
+                            <p class="text-xs text-gray-600">Anti Karat (Zinc Coated)</p>
                         </div>
                         <div class="flex flex-col items-center">
                             <i class="fas fa-palette text-4xl text-navy-deep mb-2"></i>
                             <p class="font-semibold text-sm font-mono text-navy-deep">Cat Duco & Epoxy</p>
-                            <p class="text-xs text-gray-500">Finishing Tahan Lama</p>
+                            <p class="text-xs text-gray-600">Finishing Tahan Lama</p>
                         </div>
                         <div class="flex flex-col items-center">
-                            <!-- PERUBAHAN KEEMPAT: Ganti ke bahasa pasar yang to-the-point dan DESKRIPSI SUPER PENDEK -->
                             <i class="fas fa-vector-square text-4xl text-navy-deep mb-2"></i>
                             <p class="font-semibold text-sm font-mono text-navy-deep">Laser Cutting Metal</p>
-                            <p class="text-xs text-gray-500">Motif custom presisi. Halus & modern.</p>
+                            <p class="text-xs text-gray-600">Motif custom presisi.</p>
                         </div>
                         <div class="flex flex-col items-center">
                             <i class="fas fa-shield-alt text-4xl text-navy-deep mb-2"></i>
                             <p class="font-semibold text-sm font-mono text-navy-deep">Quality Control</p>
-                            <p class="text-xs text-gray-500">Inspeksi Mutu Ketat</p>
+                            <p class="text-xs text-gray-600">Inspeksi Mutu Ketat</p>
                         </div>
                         
                     </div>
@@ -584,7 +453,7 @@
             </div>
         </section>
 
-        <!-- Portfolio (REVISI COPYWRITING TOTAL: DARI KUANTITAS KE KUALITAS) -->
+        <!-- Portfolio -->
         <section id="portofolio" class="py-20 bg-navy-deep text-white">
             <div class="max-w-7xl mx-auto px-4" x-data="{  
                 activeFilter: 'Proyek Khusus',  
@@ -603,7 +472,7 @@
             }">
                 <div class="text-center mb-10">
                     <h2 class="font-display text-4xl font-bold uppercase">BUKTI FISIK, BUKAN RENDER 3D</h2>
-                    <p class="text-gray-400 mt-2">Kami tidak menjual gambar cantik. Kami menjual struktur yang berdiri kokoh di lokasi Anda.</p>
+                    <p class="text-gray-300 mt-2">Kami tidak menjual gambar cantik. Kami menjual struktur yang berdiri kokoh di lokasi Anda.</p>
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-2 mb-10">
@@ -616,29 +485,27 @@
                     </template>
                 </div>
 
-                <!-- LIST FOTO - PERBAIKAN LOGIKA ASPEK RASIO -->
+                <!-- LIST FOTO -->
                 <div class="max-w-4xl mx-auto">
                     <template x-for="(img, index) in images" :key="index">
-                        <!-- Tampilkan hanya jika kategori cocok -->
                         <div x-show="activeFilter === img.category"
                              x-data="{ imgLoaded: false }"
                              class="portfolio-item group relative cursor-pointer shadow-xl rounded-sm hover:-translate-y-2 hover:shadow-2xl mb-8"
                              :class="{
                                  'aspect-4-3': img.category === 'Proyek Khusus' || img.category === 'Kanopi',
                                  'aspect-9-16': img.category === 'Tangga Putar'
-                                 // Pagar & Railing menggunakan default aspect-ratio: 16 / 9 dari .portfolio-item
                              }"
                              @click="openModal(img)"
                              x-transition:enter="transition ease-out duration-300"
                              x-transition:enter-start="opacity-0 scale-95"
                              x-transition:enter-end="opacity-100 scale-100">
                             
-                            <!-- Loading Spinner (Visible when not loaded) -->
+                            <!-- Loading Spinner -->
                             <div x-show="!imgLoaded" class="absolute inset-0 flex items-center justify-center z-0 bg-gray-900">
                                 <i class="fas fa-hard-hat text-orange-safety animate-pulse text-3xl"></i>
                             </div>
 
-                            <!-- Image: Menggunakan object-fit: cover untuk memenuhi container rasio yang ditentukan -->
+                            <!-- Image with lazy loading -->
                             <img :src="img.src"  
                                  loading="lazy"
                                  decoding="async"
@@ -669,29 +536,20 @@
                 <div x-show="modalOpen" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm" x-cloak>
                     <div class="absolute inset-0" @click="closeModal()"></div>
                     <div class="relative w-full max-w-5xl bg-navy-light border border-gray-700 rounded-lg overflow-hidden shadow-2xl">
-                        <!-- Tombol Tutup 'X' (Di dalam Modal, di samping kanan atas) -->
-                        <button @click="closeModal()" class="absolute top-4 right-4 z-20 text-white hover:text-orange-safety text-3xl p-2 rounded-full bg-black/20 hover:bg-black/50 transition-colors">
+                        <button @click="closeModal()" class="absolute top-4 right-4 z-20 text-white hover:text-orange-safety text-3xl p-2 rounded-full bg-black/20 hover:bg-black/50 transition-colors" aria-label="Tutup Modal">
                             <i class="fas fa-times"></i>
                         </button>
                         
                         <div class="flex flex-col md:flex-row">
-                            <!-- Kontainer Gambar -->
                             <div class="md:w-3/4 bg-black flex items-center justify-center p-2 min-h-[400px] md:min-h-[600px] relative">
-                                <img :src="modalImg.src" loading="lazy" class="w-full h-full object-contain max-h-[80vh]">
-                                
-                                <!-- Hapus Tombol Tutup Tambahan yang JELAS (Bottom Left, Always Visible) sesuai permintaan user. -->
-                                
+                                <img :src="modalImg.src" loading="lazy" :alt="modalImg.alt" class="w-full h-full object-contain max-h-[80vh]">
                             </div>
                             
-                            <!-- Kontainer WA Link -->
                             <div class="md:w-1/4 p-6 flex flex-col justify-center border-l border-gray-700">
-                                <!-- Hapus deskripsi modalImg.alt, hanya tampilkan kategori sebagai judul -->
                                 <h3 class="font-mono text-2xl font-extrabold text-orange-safety uppercase tracking-widest mb-4 text-center" x-text="modalImg.category"></h3>
                                 
                                 <div class="mt-4">
                                     <p class="text-white text-sm font-bold mb-4 text-center">Tertarik dengan model ini?</p>
-                                    
-                                    <!-- WA LINK NIAT & DINAMIS (Menggunakan fungsi generateWaLink) -->
                                     <a :href="generateWaLink(modalImg.category)"  
                                        class="bg-orange-safety text-white py-3 px-4 text-center font-bold uppercase text-sm hover:bg-orange-dark transition block rounded shadow-lg border-b-4 border-orange-800 active:border-b-0 active:translate-y-1 w-full"
                                        target="_blank">
@@ -746,7 +604,6 @@
                     active: null,  
                     faqs: [
                         { q: 'Bagaimana proses mendapatkan estimasi harga?', a: 'Proses dimulai dengan Konsultasi via WhatsApp/Formulir. Kami akan meminta data dimensi dan desain. Selanjutnya, kami akan menjadwalkan survei. Survei di area Jawa Timur gratis. Untuk luar Jawa Timur, dikenakan biaya transport yang disepakati, dikalkulasi dari basis Surabaya.' },
-                        /* REVISI: Mengupdate jawaban FAQ material cat ke Duco & Epoxy */
                         { q: 'Apakah harga sudah termasuk material premium dan coating anti-karat?', a: 'Ya. Semua penawaran kami adalah harga jujur tanpa mark-up siluman yang mencakup Material Berkualitas, fabrikasi presisi, lapisan dasar Epoxy anti-karat, Finishing Cat Duco (standar industri), serta instalasi bersih.' },
                         { q: 'Apakah Anda melayani proyek di luar Jawa Timur?', a: 'Ya, kami melayani proyek konstruksi skala besar di seluruh Indonesia. Basis kami di Surabaya mendukung logistik dan koordinasi tim ke luar pulau. Diskusikan detail proyek Anda agar kami dapat menghitung biaya logistik yang efisien.' },
                         { q: 'Berapa lama waktu yang dibutuhkan untuk fabrikasi dan instalasi?', a: 'Waktu pengerjaan sangat bergantung pada kompleksitas dan volume proyek. Kami akan memberikan estimasi waktu yang jelas di awal. Umumnya, Kanopi standar membutuhkan 7-14 hari kerja untuk fabrikasi dan instalasi setelah desain disepakati.' }
@@ -831,14 +688,16 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-10 mb-8">
                 
                 <div>
-                    <h4 class="font-mono text-2xl font-black text-orange-safety mb-4 tracking-widest">ABIB JAYA</h4>
+                    <!-- FIX: Menggunakan H3 untuk struktur yang benar setelah H2 -->
+                    <h3 class="font-mono text-2xl font-black text-orange-safety mb-4 tracking-widest">ABIB JAYA</h3>
                     <p class="text-silver-metallic text-sm">
                         Bengkel Las Konstruksi Besi & Baja profesional. Berpengalaman 20 tahun, spesialis fabrikasi presisi dengan material Berkualitas. Mitra terpercaya untuk layanan skala nasional.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="font-mono text-lg font-bold mb-4">Tautan Cepat</h4>
+                    <!-- FIX: Menggunakan H3 -->
+                    <h3 class="font-mono text-lg font-bold mb-4">Tautan Cepat</h3>
                     <ul class="space-y-2 text-silver-metallic text-sm">
                         <li><a href="#tentangkami" class="hover:text-orange-safety transition duration-150">Tentang Kami</a></li>
                         <li><a href="#layanan" class="hover:text-orange-safety transition duration-150">Layanan Kami</a></li>
@@ -850,7 +709,8 @@
                 </div>
 
                 <div>
-                    <h4 class="font-mono text-lg font-bold mb-4">Hubungi Kami</h4>
+                    <!-- FIX: Menggunakan H3 -->
+                    <h3 class="font-mono text-lg font-bold mb-4">Hubungi Kami</h3>
                     <ul class="space-y-2 text-silver-metallic text-sm">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-orange-safety mt-1 mr-3 flex-shrink-0"></i>
@@ -870,11 +730,15 @@
                 </div>
 
                 <div>
-                    <h4 class="font-mono text-lg font-bold mb-4">Temukan Bengkel Kami</h4>
+                    <!-- FIX: Menggunakan H3 -->
+                    <h3 class="font-mono text-lg font-bold mb-4">Temukan Bengkel Kami</h3>
                     <a href="https://www.google.com/maps/search/?api=1&query=Bengkel+Las+Abib+Jaya+Surabaya" target="_blank" class="block group relative overflow-hidden bg-gray-800 h-32 rounded-sm mb-4 border-4 border-gray-700 hover:border-orange-safety transition duration-300 shadow-lg">
+                        <!-- FIX: Menambahkan width dan height explicit untuk mencegah CLS -->
                         <img src="https://placehold.co/400x200/222/666?text=MAP+VIEW"
-                                         loading="lazy" <!-- Tambahkan loading="lazy" di sini -->
-                                         class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Peta Lokasi Bengkel Surabaya">
+                                     loading="lazy" 
+                                     width="400"
+                                     height="200"
+                                     class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Peta Lokasi Bengkel Surabaya">
                         
                         <div class="absolute inset-0 flex flex-col items-center justify-center z-10 p-2">
                             <div class="w-10 h-10 bg-orange-safety rounded-full flex items-center justify-center mb-1 shadow-lg group-hover:scale-110 transition">
@@ -899,5 +763,75 @@
             </div>
         </div>
     </footer>
+
+    <!-- SCRIPT DI PINDAH KE BAWAH UNTUK MENGHINDARI RENDER BLOCKING -->
+    <script>
+        const PORTFOLIO_IMAGES = [
+            { 
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-3.webp', 
+                alt: 'Kanopi Atap Kaca Tempered dengan Struktur Industrial', 
+                category: 'Proyek Khusus' 
+            },
+            { 
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-1.webp', 
+                alt: 'Tangga Putar Minimalis Besi Tempa Modern', 
+                category: 'Kanopi' 
+            },
+            { 
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-5.webp', 
+                alt: 'Konstruksi Struktur Baja Berat WF / H-Beam Gudang', 
+                category: 'Pagar' 
+            },
+            { 
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-4.webp', 
+                alt: 'Railing Balkon Stainless Steel dan Kaca Premium', 
+                category: 'Railing'
+            },
+            { 
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-2.webp', 
+                alt: 'Pagar Cutting Laser Motif Geometris Hollow Galvanis', 
+                category: 'Tangga Putar'
+            }
+        ];
+
+        function generateWaLink(category) {
+            let message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [" + category + "].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Material Utama: ...";
+
+            if (category === 'Kanopi') {
+                message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Kanopi].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Atap (Kaca/Alderon/Spandek/Lainnya): ...";
+            } else if (category === 'Pagar') {
+                message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Pagar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Jenis Pagar (Hollow/Besi Tempa/Cutting Laser): ...";
+            } else if (category === 'Railing') {
+                    message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Railing].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Lokasi (Tangga/Balkon) & Material (Stainless/Besi): ...";
+            } else if (category === 'Tangga Putar') {
+                    message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Tangga Putar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Tinggi Lantai ke Lantai: ...%0A4. Diameter Ruang yang Tersedia: ...";
+            } else if (category === 'Proyek Khusus') {
+                    message = "Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Konstruksi Baja Berat/Proyek Khusus].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Luas Bangunan (m2): ...%0A4. Penggunaan (Gudang/Pabrik/Mezzanine): ...";
+            }
+
+            return 'https://wa.me/6281216359499?text=' + message;
+        }
+
+        function getPlaceholderSize(category) {
+            switch (category) {
+                case 'Proyek Khusus':
+                case 'Kanopi':
+                    return { w: 800, h: 600 }; 
+                case 'Tangga Putar':
+                    return { w: 600, h: 800 }; 
+                default: 
+                    return { w: 800, h: 450 }; 
+            }
+        }
+        
+        function generateSvgPlaceholder(category) {
+            const size = getPlaceholderSize(category);
+            const w = size.w;
+            const h = size.h;
+            
+            const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="100%" height="100%" fill="#111827"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FF4500" font-family="Oswald, sans-serif" font-size="48" font-weight="bold">PROYEK Loading</text></svg>`;
+            return `data:image/svg+xml;base64,${btoa(svgContent)}`;
+        }
+    </script>
 </body>
 </html>
