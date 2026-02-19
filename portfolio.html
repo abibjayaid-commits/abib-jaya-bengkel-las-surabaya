@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arsip Dokumentasi Proyek Abib Jaya. Galeri lengkap bukti pengerjaan konstruksi besi, baja berat, dan kanopi di seluruh Indonesia.">
+    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FF4500/001F3F?text=AJ">
+    <title>Arsip Proyek | Abib Jaya Konstruksi</title>
+    <link rel="canonical" href="https://abibjaya.netlify.app/" />
+    
+    <!-- PRECONNECT (Wajib untuk performa CDN) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy-deep': '#001F3F',      
+                        'navy-light': '#003366', 
+                        'orange-safety': '#FF4500',    
+                        'dark-bg': '#0f172a',        
+                        'silver-metallic': '#D3D3D3',
+                    },
+                    fontFamily: {
+                        mono: ['Oswald', 'sans-serif'],  
+                        sans: ['Open Sans', 'sans-serif'],  
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        [x-cloak] { display: none !important; }
+        .bg-grid-pattern {
+            background-color: #0f172a;
+            background-image: linear-gradient(rgba(255, 69, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 69, 0, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #001F3F; }
+        ::-webkit-scrollbar-thumb { background: #FF4500; }
+
+        /* MASONRY OPTIMIZATION */
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 16px;
+            line-height: 0; /* HACK: Membunuh ghost space vertical */
+            font-size: 0;   
+        }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 4; } }
+
+        .masonry-item {
+            display: inline-block;
+            width: 100%;
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            margin-bottom: 16px;
+            line-height: 1.5; /* Reset line-height untuk konten */
+            font-size: 1rem;
+            
+            background-color: #020617; 
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #374151;
+            
+            /* Render optimization */
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .masonry-item:hover {
+            border-color: #FF4500;
+            transform: translateY(-2px);
+            z-index: 10;
+        }
+
+        .project-img {
+            width: 100%;
+            height: auto;  
+            display: block; 
+            transition: opacity 0.3s ease-in-out;
+            background-color: #020617; /* Placeholder color saat loading */
+        }
+        
+        .img-loading {
+            opacity: 0;
+            min-height: 250px; /* Vital untuk mengurangi CLS */
+        }
+        
+        .img-loaded {
+            opacity: 1;
+            min-height: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-dark-bg text-gray-300 font-sans antialiased" x-data="portfolioApp()">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-navy-deep border-b-4 border-orange-safety shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Back Button -->
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <i class="fas fa-arrow-left text-orange-safety group-hover:text-white transition"></i>
+                    <span class="font-mono text-2xl font-black tracking-widest text-white">ABIB <span class="text-orange-safety">JAYA</span></span>
+                </a>
+                <div class="hidden md:block"></div> 
+                <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20melihat%20arsip%20proyek%20Anda%20dan%20tertarik%20konsultasi..." class="bg-orange-safety text-navy-deep px-4 py-2 font-bold font-mono text-sm uppercase hover:bg-white transition rounded-md" target="_blank">
+                    <i class="fab fa-whatsapp mr-1"></i> MINTA PENAWARAN
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="bg-grid-pattern min-h-screen pb-20">
+        
+        <section class="pt-16 pb-8 text-center px-4">
+            <h1 class="font-mono text-5xl md:text-6xl font-black text-white uppercase tracking-tighter mb-2">ARSIP PROYEK</h1>
+            <p class="max-w-2xl mx-auto text-silver-metallic text-lg">
+                Bukan janji di atas kertas. Ini adalah bukti kerja keras dan presisi tim kami di lapangan.
+            </p>
+        </section>
+        
+        <section class="max-w-[1400px] mx-auto px-4">
+            
+            <!-- MASONRY CONTAINER -->
+            <div class="masonry-grid">
+                
+                <template x-for="(item, index) in allData" :key="index">
+                    <div class="masonry-item group cursor-pointer relative" 
+                         x-data="{ imgLoaded: false }"
+                         @click="openModal(item.src, item.id)">
+                        
+                        <!-- Image: Error handling dipindah ke fungsi JS agar HTML bersih -->
+                        <img :src="item.src" 
+                             loading="lazy" 
+                             decoding="async"
+                             :alt="'Dokumentasi Proyek Konstruksi Abib Jaya - Foto ' + item.id" 
+                             class="project-img"
+                             :class="imgLoaded ? 'img-loaded' : 'img-loading'"
+                             @load="imgLoaded = true"
+                             @error="handleImageError($el)">
+                        
+                        <!-- Loading Spinner -->
+                        <div x-show="!imgLoaded" class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+                            <i class="fas fa-hard-hat text-gray-700 animate-pulse text-3xl"></i>
+                        </div>
+
+                        <!-- Overlay Hover -->
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
+                            <i class="fas fa-search-plus text-white text-3xl drop-shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200"></i>
+                        </div>
+
+                    </div>
+                </template>
+
+            </div>
+            
+            <div class="mt-16 text-center pb-20">
+                <p class="text-gray-500 font-mono text-sm uppercase tracking-widest mt-8 flex items-center justify-center gap-2">
+                    <span class="w-12 h-px bg-gray-700"></span>
+                    ARSIP LENGKAP
+                    <span class="w-12 h-px bg-gray-700"></span>
+                </p>
+            </div>
+        </section>
+        
+        <!-- Modal Gambar -->
+        <div x-show="modalOpen" 
+             class="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8 bg-black/95 backdrop-blur-sm" 
+             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+             x-cloak
+             @keydown.escape.window="closeModal()">
+            
+            <div class="absolute inset-0 cursor-pointer" @click="closeModal()"></div>
+            
+            <div class="relative z-10 w-full h-full flex flex-col items-center justify-center pointer-events-none">
+                <div class="relative pointer-events-auto max-w-full max-h-full">
+                    <button @click="closeModal()" class="absolute -top-12 right-0 md:-right-12 text-white hover:text-orange-safety transition p-2 bg-black/50 rounded-full w-10 h-10 flex items-center justify-center border border-gray-600 z-50">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+
+                    <img :src="activeItem" 
+                         class="max-w-[95vw] max-h-[85vh] object-contain rounded-sm border border-gray-800 shadow-2xl bg-black select-none"
+                         style="box-shadow: 0 0 50px rgba(0,0,0,0.8);">
+                    
+                    <div class="mt-4 text-center">
+                        <span class="inline-block bg-navy-deep text-orange-safety font-mono text-xs px-3 py-1 rounded border border-orange-safety/30">
+                            ID FILE: #<span x-text="activeId"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer class="bg-black text-center py-6 border-t border-gray-800 text-gray-600 text-xs font-mono">
+        <p>&copy; 2024 ABIB JAYA KONSTRUKSI.</p>
+    </footer>
+    
+    <script>
+        // Placeholder Base64 dipisah biar tidak mengotori HTML
+        const SVG_PLACEHOLDER = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzAyMDYxNyIvPjxyZWN0IHg9IjQwJSIgeT0iNDAlIiB3aWR0aD0iMjAlIiBoZWlnaHQ9IjIwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkY0NTAwIiBzdHJva2Utd2lkdGg9IjIiLz48bGluZSB4MT0iNDAlIiB5MT0iNDAlIiB4Mj0iNjAlIiB5Mj0iNjAlIiBzdHJva2U9IiNGRjQ1MDAiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI2MCUiIHkxPSI0MCUiIHgyPSI0MCUiIHkyPSI2MCUiIHN0cm9rZT0iI0ZGNDUwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNTAlIiB5PSI3NSUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlN2U1ZTRIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCI+R0FNQkFSIEVSUk9SPC90ZXh0Pjwvc3ZnPg==";
+
+        function portfolioApp() {
+            const allImages = [];
+            const excludeIndices = [67, 156, 157, 94, 128, 74]; 
+
+            for (let i = 1; i <= 157; i++) {
+                if (!excludeIndices.includes(i)) {
+                    allImages.push({
+                        id: i,
+                        src: `https://abibjayaid-commits.github.io/abib-jaya-assets/project-2-${i}.webp`
+                    });
+                }
+            }
+            
+            return {
+                allData: allImages,
+                
+                modalOpen: false,
+                activeItem: '',
+                activeId: '',
+                
+                openModal(src, id) {
+                    this.activeItem = src;
+                    this.activeId = id;
+                    this.modalOpen = true;
+                    document.body.style.overflow = 'hidden';
+                },
+                
+                closeModal() {
+                    this.modalOpen = false;
+                    document.body.style.overflow = 'auto';
+                },
+
+                handleImageError(el) {
+                    el.onerror = null; 
+                    el.src = SVG_PLACEHOLDER;
+                    el.classList.remove('img-loading');
+                    el.classList.add('img-loaded');
+                    // Opsional: Tambahkan border merah agar ketahuan file rusak
+                    el.style.border = '1px solid #ef4444';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
