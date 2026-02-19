@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" style="background-color:#ffffff;color-scheme:only light;" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="wqd8xN_Am40ZybZ7bkUXpVnk6I9uPyKjZRZi3JOUfKk" />
+    <meta name="color-scheme" content="only light">
+    <meta name="supported-color-schemes" content="light">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Bengkel Las Abib Jaya. Spesialis Konstruksi Besi Berkualitas, Baja Ringan/Berat, Canopy, Pagar & Railing Kualitas Premium. Melayani proyek di seluruh Indonesia. Berpengalaman 20+ tahun.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FF4500'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23001F3F' font-family='Arial Black,sans-serif' font-weight='900' font-size='16'%3EAJ%3C/text%3E%3C/svg%3E">
+    <title>Abib Jaya | Bengkel Las Konstruksi Besi & Baja Berkualitas (Layanan Nasional)</title>
+    <link rel="canonical" href="https://abibjaya.netlify.app/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy-deep': '#001F3F',
+                        'navy-light': '#003366',
+                        'orange-safety': '#FF4500',
+                        'orange-dark': '#CC3700',
+                        'silver-metallic': '#D3D3D3',
+                        'dark-bg': '#111827',
+                    },
+                    fontFamily: {
+                        mono: ['Oswald', 'sans-serif'],
+                        sans: ['Open Sans', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root, html, *, *::before, *::after {
+            color-scheme: only light !important;
+            -webkit-color-scheme: only light !important;
+        }
+
+        :where(html, body) {
+            background-color: #ffffff !important;
+            color: #1f2937 !important;
+            color-scheme: only light !important;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #ffffff;
+            line-height: 1.5;
+        }
+
+        img, video, iframe, canvas, svg {
+            mix-blend-mode: normal !important;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .bg-white, section.bg-white { background-color: #ffffff !important; }
+        .bg-gray-100 { background-color: #f3f4f6 !important; }
+        .bg-gray-200 { background-color: #e5e7eb !important; }
+        .bg-navy-deep { background-color: #001F3F !important; }
+        .bg-dark-bg { background-color: #111827 !important; }
+        .bg-black { background-color: #000000 !important; }
+
+        @media (prefers-color-scheme: dark) {
+            html, body {
+                background-color: #ffffff !important;
+                color: #1f2937 !important;
+                color-scheme: only light !important;
+            }
+            .bg-white, section.bg-white, div.bg-white { background-color: #ffffff !important; }
+            .bg-gray-100, section.bg-gray-100 { background-color: #f3f4f6 !important; }
+            .bg-gray-200, section.bg-gray-200 { background-color: #e5e7eb !important; }
+            .bg-navy-deep, section.bg-navy-deep, header.bg-navy-deep, footer.bg-navy-deep { background-color: #001F3F !important; }
+            .bg-dark-bg, section.bg-dark-bg { background-color: #111827 !important; }
+            .bg-black { background-color: #000000 !important; }
+            .bg-orange-safety { background-color: #FF4500 !important; }
+            .text-white { color: #ffffff !important; }
+            .text-gray-900 { color: #111827 !important; }
+            .text-gray-700 { color: #374151 !important; }
+            .text-gray-600 { color: #4b5563 !important; }
+            .text-gray-500 { color: #6b7280 !important; }
+            .text-navy-deep { color: #001F3F !important; }
+            .text-orange-safety { color: #FF4500 !important; }
+            .text-silver-metallic { color: #D3D3D3 !important; }
+            .border-gray-300 { border-color: #d1d5db !important; }
+            .border-gray-700 { border-color: #374151 !important; }
+            .border-orange-safety { border-color: #FF4500 !important; }
+            .border-navy-deep { border-color: #001F3F !important; }
+            .service-card { background-color: #f3f4f6 !important; }
+            .hero-bg { background-color: #001F3F !important; }
+            .portfolio-item { background-color: #111827 !important; }
+            img, svg, video, iframe {
+                filter: none !important;
+                mix-blend-mode: normal !important;
+            }
+        }
+
+        .hero-bg {
+            background-color: #001F3F;
+            background-image: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.08) 10%,
+                transparent 10%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.08) 50%,
+                rgba(255, 255, 255, 0.08) 90%,
+                transparent 90%,
+                transparent
+            ),
+            linear-gradient(to bottom, rgba(0, 31, 63, 0.98), rgba(0, 31, 63, 0.85));
+            background-size: 15px 15px, cover;
+            background-position: center;
+        }
+
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            border-radius: 8px !important;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 69, 0, 0.5);
+            border-color: #FF4500;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #FF4500; border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: #2e3b4a; }
+
+        .modal-open { overflow: hidden; }
+        [x-cloak] { display: none !important; }
+
+        .floating-cta-desktop {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .floating-cta-desktop a { width: 70px; height: 70px; }
+
+        @media (max-width: 639px) {
+            .floating-cta-desktop { bottom: 15px; right: 15px; gap: 10px; }
+            .floating-cta-desktop a { width: 60px; height: 60px; }
+        }
+
+        .cta-glow { box-shadow: 0 0 15px rgba(255, 69, 0, 0.7), 0 0 30px rgba(255, 69, 0, 0.5); }
+        .cta-glow:hover { box-shadow: 0 0 5px rgba(255, 69, 0, 1), 0 0 40px rgba(255, 69, 0, 0.8); }
+
+        .faq-item { border-bottom: 2px solid #e5e7eb; }
+        .faq-item:last-child { border-bottom: none; }
+
+        .portfolio-item {
+            background-color: #111827;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            min-height: 100px;
+            aspect-ratio: 16 / 9;
+        }
+
+        .portfolio-item:hover {
+            border-color: #FF4500;
+            box-shadow: 0 10px 15px -3px rgba(255, 69, 0, 0.2);
+        }
+
+        .aspect-4-3 { aspect-ratio: 4 / 3; }
+        .aspect-9-16 { aspect-ratio: 9 / 16; }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.5s ease-in-out;
+            min-height: 100px;
+        }
+
+        .img-loading { opacity: 0; }
+        .img-loaded { opacity: 1; min-height: auto; }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen bg-white text-gray-900" style="background-color:#ffffff">
+
+    <div class="flex floating-cta-desktop">
+        <a href="https://wa.me/6285852566683?text=Halo%20Abib%20Jaya.%20Saya%20serius%20ingin%20konsultasi%20proyek%20dan%20menolak%20buang%20waktu.%0A%0ABerikut%20data%20saya%3A%0A1.%20Nama%3A%20...%0A2.%20Lokasi%20Proyek%3A%20...%0A3.%20Jenis%20Pekerjaan%20(Pagar%2FKanopi%2FGudang)%3A%20...%0A4.%20Estimasi%20Ukuran%20(PxL)%3A%20...%0A%0AMohon%20dibalas%20dengan%20estimasi%20kasar%20atau%20jadwal%20survei." target="_blank"
+            class="flex items-center justify-center rounded-full bg-orange-safety hover:bg-orange-700 text-navy-deep shadow-2xl transition duration-200 cta-glow"
+            aria-label="Konsultasi Gratis via WhatsApp">
+            <i class="fab fa-whatsapp text-4xl text-navy-deep"></i>
+        </a>
+        <a href="tel:+6285852566683"
+            class="flex items-center justify-center rounded-full bg-navy-deep hover:bg-dark-bg text-white shadow-2xl transition duration-200 border-2 border-orange-safety"
+            aria-label="Hubungi Kami via Telepon">
+            <i class="fas fa-phone-alt text-3xl text-orange-safety"></i>
+        </a>
+    </div>
+
+    <header x-data="{ open: false, isSticky: false }"
+            @scroll.window="isSticky = (window.pageYOffset > 50) ? true : false"
+            :class="{'shadow-xl py-2': isSticky, 'py-4': !isSticky}"
+            class="sticky top-0 z-40 bg-navy-deep text-white transition-all duration-300 ease-in-out">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="flex-shrink-0 font-mono text-3xl font-black tracking-widest text-orange-safety">
+                    ABIB <span class="text-white">JAYA</span>
+                </a>
+                <nav class="hidden md:flex space-x-3 lg:space-x-5 items-center font-semibold text-sm">
+                    <a href="#tentangkami" class="hover:text-orange-safety transition duration-150">Tentang Kami</a>
+                    <a href="#layanan" class="hover:text-orange-safety transition duration-150">Layanan</a>
+                    <a href="#proseskerja" class="hover:text-orange-safety transition duration-150">Proses Kerja</a>
+                    <a href="#portofolio" class="hover:text-orange-safety transition duration-150">Portofolio</a>
+                    <a href="#faq" class="hover:text-orange-safety transition duration-150">FAQ</a>
+                    <a href="#kontak" class="hover:text-orange-safety transition duration-150">Kontak</a>
+                    <a href="https://wa.me/6285852566683?text=Halo%20Abib%20Jaya.%20Saya%20ingin%20jadwal%20survei%20untuk%20proyek%20konstruksi.%0A%0ANama%3A%20...%0ALokasi%3A%20...%0AJenis%20Kerja%3A%20..." target="_blank" class="bg-orange-safety px-3 py-1.5 rounded-sm text-navy-deep font-bold hover:bg-orange-700 hover:text-white transition duration-150 border-2 border-orange-safety hover:border-white text-sm">
+                        <i class="fab fa-whatsapp mr-2"></i> KONSULTASI
+                    </a>
+                </nav>
+                <div class="md:hidden">
+                    <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-silver-metallic hover:text-white hover:bg-dark-bg focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-safety" aria-expanded="false" aria-label="Toggle Menu">
+                        <i x-show="!open" class="fas fa-bars h-6 w-6"></i>
+                        <i x-show="open" class="fas fa-times h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div x-show="open" @click.away="open = false"
+             x-transition:enter="duration-200 ease-out" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+             x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+             class="md:hidden origin-top-right absolute w-full bg-navy-deep shadow-2xl ring-1 ring-black ring-opacity-5 divide-y divide-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#tentangkami" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Tentang Kami</a>
+                <a href="#layanan" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Layanan</a>
+                <a href="#proseskerja" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Proses Kerja</a>
+                <a href="#portofolio" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Portofolio</a>
+                <a href="#faq" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">FAQ</a>
+                <a href="#kontak" @click="open = false" class="block px-3 py-2 rounded-md text-base font-medium text-silver-metallic hover:bg-dark-bg hover:text-white">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-bg text-white pt-24 pb-20 sm:pt-32 sm:pb-24 border-b-8 border-orange-safety">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-orange-safety font-bold mb-3 tracking-widest uppercase">TERUJI 20+ TAHUN | KONTRAKTOR BESI & BAJA PROFESIONAL</p>
+                <h1 class="font-mono text-5xl sm:text-7xl font-extrabold leading-tight mb-6 tracking-tighter">
+                    KONSTRUKSI BESI & BAJA <span class="text-orange-safety">BERKUALITAS</span>
+                </h1>
+                <p class="text-silver-metallic max-w-3xl mx-auto text-xl mb-10">
+                    Kami menjamin kualitas struktural, fabrikasi presisi, dan desain Industrial Modern untuk proyek properti, gudang, dan infrastruktur Anda di seluruh Indonesia.
+                </p>
+                <a href="https://wa.me/6285852566683?text=Halo%20Abib%20Jaya.%20Saya%20butuh%20penawaran%20serius%20untuk%20proyek%20konstruksi.%0A%0ADetail%20Proyek%3A%0A-%20Nama%3A%20...%0A-%20Lokasi%3A%20...%0A-%20Kebutuhan%20(Pagar%2FKanopi%2FBaja%20Ringan%2FKonstruksi%20WF)%3A%20...%0A-%20Budget%20Range%3A%20..." target="_blank" class="inline-block px-12 py-5 text-xl font-bold rounded-sm bg-orange-safety text-navy-deep shadow-2xl cta-glow hover:bg-orange-700 hover:text-white transition duration-300 transform hover:scale-105 uppercase">
+                    <i class="fab fa-whatsapp mr-3"></i> MINTA PENAWARAN & KONSULTASI SEKARANG
+                </a>
+            </div>
+        </section>
+
+        <section class="bg-dark-bg py-12" style="background-color:#111827">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-navy-deep rounded-sm shadow-2xl border-b-8 border-orange-safety">
+                        <p class="font-mono text-5xl font-black text-orange-safety mb-1 tracking-tighter">20+</p>
+                        <p class="text-lg font-semibold text-white uppercase tracking-wider">Tahun Pengalaman</p>
+                        <p class="text-silver-metallic text-sm mt-1">Sejak 2003, Teruji di Berbagai Proyek</p>
+                    </div>
+                    <div class="p-6 bg-navy-deep rounded-sm shadow-2xl border-b-8 border-orange-safety">
+                        <p class="font-mono text-5xl font-black text-orange-safety mb-1 tracking-tighter">100+</p>
+                        <p class="text-lg font-semibold text-white uppercase tracking-wider">Proyek Tuntas</p>
+                        <p class="text-silver-metallic text-sm mt-1">Prioritas Kualitas Di Atas Kuantitas</p>
+                    </div>
+                    <div class="p-6 bg-navy-deep rounded-sm shadow-2xl border-b-8 border-orange-safety">
+                        <p class="font-mono text-5xl font-black text-orange-safety mb-1 tracking-tighter">NASIONAL</p>
+                        <p class="text-lg font-semibold text-white uppercase tracking-wider">Jangkauan Instalasi</p>
+                        <p class="text-silver-metallic text-sm mt-1">Siap mendukung proyek di luar Jawa Timur</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tentangkami" class="py-16 bg-white" style="background-color:#ffffff">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap items-center">
+                    <div class="w-full lg:pr-10 mb-8 lg:mb-0 max-w-4xl mx-auto">
+                        <span class="text-orange-safety font-bold uppercase tracking-widest block mb-2 text-center lg:text-left">INTEGRITAS FABRIKASI</span>
+                        <h2 class="font-mono text-4xl sm:text-5xl font-extrabold mb-6 text-navy-deep text-center lg:text-left tracking-tight">
+                            Garansi Adalah 'Plan B'.<br>Kualitas Kami Adalah 'Plan A'.
+                        </h2>
+                        <p class="text-gray-700 mb-6 text-lg text-center lg:text-left">
+                            Banyak bengkel mengumbar garansi karena mereka tahu produknya akan bermasalah. Di Abib Jaya, kami fokus pada <span class="font-bold text-navy-deep">mutu pra-instalasi</span>. Kami membangun struktur untuk bertahan puluhan tahun, sehingga Anda tidak perlu membuang waktu mengurus klaim garansi di kemudian hari.
+                        </p>
+                        <ul class="space-y-5 text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                            <li class="flex items-start">
+                                <i class="fas fa-certificate text-orange-safety mt-1 mr-3 flex-shrink-0 text-xl"></i>
+                                <p><strong>Material Berkualitas & Anti Karat Mutlak:</strong> Kami menolak penggunaan material "banci". Hanya Besi Berat bersertifikasi dan Besi Hollow Galvanis Kualitas A yang masuk ke bengkel kami.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-alt text-orange-safety mt-1 mr-3 flex-shrink-0 text-xl"></i>
+                                <p><strong>Kekuatan Struktural Teruji:</strong> Pengelasan bukan sekadar menempelkan besi. Setiap sambungan las matang (full penetration) dan melalui QC ketat. Kami membangun struktur yang tahan getaran dan cuaca ekstrem.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-drafting-compass text-orange-safety mt-1 mr-3 flex-shrink-0 text-xl"></i>
+                                <p><strong>Fabrikasi Presisi:</strong> Kami bekerja berbasis gambar kerja (Shop Drawing) terperinci. Memastikan akurasi ukuran milimeter untuk instalasi yang pas dan meminimalisir bongkar-pasang di lokasi.</p>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/6285852566683?text=Saya%20minta%20data%20spesifikasi%20teknis%20material%20yang%20Abib%20Jaya%20gunakan%20untuk%20bahan%20pertimbangan." target="_blank" class="inline-flex items-center text-navy-deep font-bold hover:text-orange-safety transition duration-150 border-b-2 border-orange-safety mt-4">
+                            Dapatkan Rincian Mutu & Jadwalkan Survei Lokasi <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proseskerja" class="py-16 bg-gray-200" style="background-color:#e5e7eb">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <span class="text-orange-safety font-bold uppercase tracking-widest block mb-2 text-center">TIDAK ADA JALAN PINTAS</span>
+                <h2 class="font-mono text-4xl sm:text-5xl font-extrabold text-center text-navy-deep mb-12 tracking-tight">Proses Kerja Fabrikasi 4 Langkah</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card" style="background-color:#ffffff">
+                        <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">1</div>
+                        <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">DESIGN & SURVEY</h3>
+                        <p class="text-gray-700 text-sm">Survei lokasi (Gratis Jatim, Luar Jatim dikenakan biaya), konsultasi teknis, dan finalisasi gambar kerja (shop drawing) yang presisi.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card" style="background-color:#ffffff">
+                        <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">2</div>
+                        <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">FABRIKASI BENGKEL</h3>
+                        <p class="text-gray-700 text-sm">Pemotongan, perakitan, dan pengelasan (MIG/SMAW) oleh tim bersertifikasi yang diawasi QC ketat.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card" style="background-color:#ffffff">
+                        <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">3</div>
+                        <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">FINISHING & COATING</h3>
+                        <p class="text-gray-700 text-sm">Aplikasi lapisan dasar Epoxy (daya rekat tinggi & anti-karat) diikuti pengecatan Duco berkualitas berlapis, memastikan ketahanan korosi jangka panjang.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-6 bg-white rounded-sm shadow-xl border-t-8 border-navy-deep service-card" style="background-color:#ffffff">
+                        <div class="w-14 h-14 bg-orange-safety rounded-full flex items-center justify-center font-mono text-2xl font-black text-navy-deep mb-4 shadow-lg">4</div>
+                        <h3 class="font-mono text-xl font-bold mb-2 text-navy-deep">DELIVERY & INSTALLASI</h3>
+                        <p class="text-gray-700 text-sm">Instalasi di lokasi proyek Anda secara profesional, aman (K3), rapi, dan sesuai dengan target waktu yang disepakati.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="https://wa.me/6285852566683?text=Halo%20Admin.%20Saya%20ingin%20jadwal%20survei%20lokasi%20untuk%20pengukuran.%0A%0AAlamat%20Lengkap%3A%20...%0AJenis%20Proyek%3A%20...%0AHari%2FJam%20Survei%3A%20..." target="_blank" class="inline-block px-10 py-4 text-xl font-bold rounded-sm bg-navy-deep text-white shadow-xl hover:bg-dark-bg transition duration-300 transform hover:scale-105 border-2 border-transparent hover:border-orange-safety">
+                        <i class="fas fa-handshake mr-2"></i> Jadwalkan Survei Lokasi
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="layanan" class="py-16 bg-white" style="background-color:#ffffff">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-mono text-4xl sm:text-5xl font-extrabold text-center text-navy-deep mb-4 tracking-tight">Spesialisasi Fabrikasi Besi, Baja Ringan & Baja Berat</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">Kami mengkhususkan diri pada hasil akhir yang kuat, tahan lama, dan berestetika Industrial Modern untuk berbagai kebutuhan proyek.</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center" style="background-color:#f3f4f6">
+                        <i class="fas fa-umbrella text-4xl text-orange-safety mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Canopy</h3>
+                        <p class="text-sm text-gray-700">Kaca Tempered, Alderon, Spandek. Struktur dirancang untuk Durabilitas Maksimum.</p>
+                    </div>
+                    <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center" style="background-color:#f3f4f6">
+                        <i class="fas fa-border-all text-4xl text-orange-safety mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Pagar Minimalis</h3>
+                        <p class="text-sm text-gray-700">Pagar dorong/lipat hollow galvanis, anti karat dan modern.</p>
+                    </div>
+                    <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center" style="background-color:#f3f4f6">
+                        <i class="fas fa-home text-4xl text-orange-safety mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Konstruksi Baja Ringan</h3>
+                        <p class="text-sm text-gray-700">Rangka atap & struktur bangunan ringan. Presisi, cepat, dan ekonomis.</p>
+                    </div>
+                    <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center" style="background-color:#f3f4f6">
+                        <i class="fas fa-warehouse text-4xl text-orange-safety mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Konstruksi Baja Berat</h3>
+                        <p class="text-sm text-gray-700">Besi Berat WF / H-Beam untuk gudang, pabrik, atau ruko.</p>
+                    </div>
+                    <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center" style="background-color:#f3f4f6">
+                        <i class="fas fa-layer-group text-4xl text-orange-safety mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Railing Tangga/Balkon</h3>
+                        <p class="text-sm text-gray-700">Stainless steel, tempered glass, atau besi modern.</p>
+                    </div>
+                    <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center" style="background-color:#f3f4f6">
+                        <i class="fas fa-crown text-4xl text-orange-safety mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Besi Tempa Klasik</h3>
+                        <p class="text-sm text-gray-700">Pagar, tralis, & railing ornamen kelas premium.</p>
+                    </div>
+                    <div class="service-card p-6 bg-gray-100 rounded-sm border-2 border-gray-300 shadow-md flex flex-col items-center text-center" style="background-color:#f3f4f6">
+                        <i class="fas fa-circle-notch text-4xl text-orange-safety mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold text-navy-deep mb-2">Tangga Putar</h3>
+                        <p class="text-sm text-gray-700">Desain ergonomis, konstruksi besi berkualitas untuk keamanan maksimal dan efisiensi ruang.</p>
+                    </div>
+                    <a href="https://wa.me/6285852566683?text=Saya%20punya%20desain%20sendiri%20(Custom)%20dan%20ingin%20estimasi%20biaya.%0A%0AJenis%20Barang%3A%20...%0AMaterial%20yg%20diinginkan%3A%20...%0A(Saya%20akan%20kirim%20foto%20referensi%20setelah%20ini)" target="_blank" class="service-card p-6 bg-orange-safety rounded-sm border-2 border-orange-700 shadow-xl flex flex-col items-center justify-center text-center text-navy-deep hover:bg-orange-700 hover:text-white transition duration-300">
+                        <i class="fas fa-hammer text-4xl mb-4"></i>
+                        <h3 class="font-mono text-xl font-bold mb-2">PROYEK CUSTOM?</h3>
+                        <p class="text-sm font-semibold">Hubungi kami untuk penawaran harga terbaik & desain segera.</p>
+                    </a>
+                </div>
+                <div class="mt-16 pt-10 border-t-4 border-gray-300">
+                    <h3 class="font-mono text-2xl font-bold text-center text-navy-deep mb-6">Jaminan Mutu Material Standar Industri</h3>
+                    <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Kami hanya menggunakan material bersertifikasi untuk memastikan setiap konstruksi bertahan lama dan aman.</p>
+                    <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 text-center">
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-weight-hanging text-4xl text-navy-deep mb-2"></i>
+                            <p class="font-semibold text-sm font-mono text-navy-deep">Baja Berat WF / H-Beam</p>
+                            <p class="text-xs text-gray-600">Struktural Berkualitas</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-cubes text-4xl text-navy-deep mb-2"></i>
+                            <p class="font-semibold text-sm font-mono text-navy-deep">Hollow Galvanis/Galvalum</p>
+                            <p class="text-xs text-gray-600">Anti Karat (Zinc Coated)</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-palette text-4xl text-navy-deep mb-2"></i>
+                            <p class="font-semibold text-sm font-mono text-navy-deep">Cat Duco & Epoxy</p>
+                            <p class="text-xs text-gray-600">Finishing Tahan Lama</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-vector-square text-4xl text-navy-deep mb-2"></i>
+                            <p class="font-semibold text-sm font-mono text-navy-deep">Laser Cutting Metal</p>
+                            <p class="text-xs text-gray-600">Motif custom presisi.</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-shield-alt text-4xl text-navy-deep mb-2"></i>
+                            <p class="font-semibold text-sm font-mono text-navy-deep">Quality Control</p>
+                            <p class="text-xs text-gray-600">Inspeksi Mutu Ketat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portofolio" class="py-20 bg-navy-deep text-white">
+            <div class="max-w-7xl mx-auto px-4" x-data="{
+                activeFilter: 'Proyek Khusus',
+                images: PORTFOLIO_IMAGES,
+                modalOpen: false,
+                modalImg: {},
+                openModal(img) {
+                    this.modalImg = img;
+                    this.modalOpen = true;
+                    document.body.style.overflow = 'hidden';
+                },
+                closeModal() {
+                    this.modalOpen = false;
+                    document.body.style.overflow = 'auto';
+                }
+            }">
+                <div class="text-center mb-10">
+                    <h2 class="font-display text-4xl font-bold uppercase">BUKTI ASLI, BUKAN GENERATE AI</h2>
+                    <p class="text-gray-300 mt-2">Kami tidak menjual gambar cantik. Kami menjual struktur yang berdiri kokoh di lokasi Anda.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2 mb-10">
+                    <template x-for="cat in ['Proyek Khusus', 'Kanopi', 'Pagar', 'Railing', 'Tangga Putar']">
+                        <button @click="activeFilter = cat"
+                                 :class="activeFilter === cat ? 'bg-orange-safety text-white border-orange-safety' : 'border-gray-600 text-gray-400 hover:border-white'"
+                                 class="px-5 py-2 border font-bold uppercase text-sm transition-all skew-x-[-10deg]">
+                            <span class="skew-x-[10deg] inline-block" x-text="cat"></span>
+                        </button>
+                    </template>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <template x-for="(img, index) in images" :key="index">
+                        <div x-show="activeFilter === img.category"
+                             x-data="{ imgLoaded: false }"
+                             class="portfolio-item group relative cursor-pointer shadow-xl rounded-sm hover:-translate-y-2 hover:shadow-2xl mb-8"
+                             :class="{
+                                 'aspect-4-3': img.category === 'Proyek Khusus' || img.category === 'Kanopi',
+                                 'aspect-9-16': img.category === 'Tangga Putar'
+                             }"
+                             @click="openModal(img)"
+                             x-transition:enter="transition ease-out duration-300"
+                             x-transition:enter-start="opacity-0 scale-95"
+                             x-transition:enter-end="opacity-100 scale-100">
+                            <div x-show="!imgLoaded" class="absolute inset-0 flex items-center justify-center z-0 bg-gray-900">
+                                <i class="fas fa-hard-hat text-orange-safety animate-pulse text-3xl"></i>
+                            </div>
+                            <img :src="img.src"
+                                 loading="lazy"
+                                 decoding="async"
+                                 :alt="img.alt"
+                                 class="project-img w-full transition duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                                 :class="imgLoaded ? 'img-loaded' : 'img-loading'"
+                                 @load="imgLoaded = true"
+                                 :onerror="'this.onerror=null; this.src=\'' + generateSvgPlaceholder(img.category) + '\'; this.classList.remove(\'img-loading\'); this.classList.add(\'img-loaded\');'">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300">
+                                <div class="text-center">
+                                    <span class="text-orange-safety font-bold uppercase tracking-widest text-sm mb-1 block">Lihat Detail</span>
+                                    <h3 class="text-2xl font-display font-bold text-white uppercase" x-text="img.category"></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="text-center mt-12">
+                    <a class="inline-block border-b-2 border-orange-safety text-white hover:text-orange-safety transition-colors pb-1 text-lg uppercase font-bold tracking-wider" href="/portfolio">
+                        <i class="fas fa-th mr-2"></i> LIHAT PROYEK LAINNYA
+                    </a>
+                </div>
+                <div x-show="modalOpen" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm" x-cloak>
+                    <div class="absolute inset-0" @click="closeModal()"></div>
+                    <div class="relative w-full max-w-5xl bg-navy-light border border-gray-700 rounded-lg overflow-hidden shadow-2xl">
+                        <button @click="closeModal()" class="absolute top-4 right-4 z-20 text-white hover:text-orange-safety text-3xl p-2 rounded-full bg-black/20 hover:bg-black/50 transition-colors" aria-label="Tutup Modal">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-3/4 bg-black flex items-center justify-center p-2 min-h-[400px] md:min-h-[600px] relative">
+                                <img :src="modalImg.src" loading="lazy" :alt="modalImg.alt" class="w-full h-full object-contain max-h-[80vh]">
+                            </div>
+                            <div class="md:w-1/4 p-6 flex flex-col justify-center border-l border-gray-700">
+                                <h3 class="font-mono text-2xl font-extrabold text-orange-safety uppercase tracking-widest mb-4 text-center" x-text="modalImg.category"></h3>
+                                <div class="mt-4">
+                                    <p class="text-white text-sm font-bold mb-4 text-center">Tertarik dengan model ini?</p>
+                                    <a :href="generateWaLink(modalImg.category)"
+                                       class="bg-orange-safety text-white py-3 px-4 text-center font-bold uppercase text-sm hover:bg-orange-dark transition block rounded shadow-lg border-b-4 border-orange-800 active:border-b-0 active:translate-y-1 w-full"
+                                       target="_blank">
+                                        <i class="fab fa-whatsapp mr-2"></i> Ajukan Konsultasi Serius
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jangkauan" class="py-16 bg-dark-bg text-white border-t-4 border-gray-700" style="background-color:#111827">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap items-center">
+                    <div class="w-full max-w-4xl mx-auto">
+                        <span class="text-orange-safety font-bold uppercase tracking-widest block mb-2 text-center lg:text-left">LOGISTIK & INSTALASI TERSTRUKTUR</span>
+                        <h2 class="font-mono text-4xl sm:text-5xl font-extrabold mb-6 text-center lg:text-left tracking-tight">Pemasangan Aman, Tepat Waktu, & Rapi</h2>
+                        <p class="text-silver-metallic mb-8 text-lg text-center lg:text-left">
+                            Kami memahami bahwa instalasi adalah tahap krusial. Tim teknisi kami memastikan pemasangan di lokasi proyek Anda dilakukan dengan <span class="font-bold text-orange-safety">presisi struktural dan zero-accident mindset</span>, didukung oleh logistik yang efisien untuk layanan nasional.
+                        </p>
+                        <ul class="space-y-4 text-silver-metallic max-w-xl mx-auto lg:mx-0">
+                            <li class="flex items-start">
+                                <i class="fas fa-shipping-fast text-orange-safety mt-1 mr-3 text-xl flex-shrink-0"></i>
+                                <p><strong class="text-white">Logistik Efisien:</strong> Pengiriman material terencana dengan baik, meminimalkan biaya pengiriman ke luar pulau.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-hard-hat text-orange-safety mt-1 mr-3 text-xl flex-shrink-0"></i>
+                                <p><strong class="text-white">Tim Tersertifikasi:</strong> Personil instalasi wajib mematuhi protokol K3 (Keselamatan dan Kesehatan Kerja).</p>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marked-alt text-orange-safety mt-1 mr-3 text-xl flex-shrink-0"></i>
+                                <p><strong class="text-white">Jangkauan Nasional:</strong> Kami melayani proyek konstruksi skala besar di seluruh Indonesia, dari basis kuat kami di Surabaya.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-16 bg-gray-100" style="background-color:#f3f4f6">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-mono text-4xl sm:text-5xl font-extrabold text-center text-navy-deep mb-4 tracking-tight">Pertanyaan Yang Sering Diajukan (FAQ)</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-xl mx-auto text-lg">Mengatasi keberatan umum Anda mengenai proses, harga, dan material kami.</p>
+                <div x-data="{
+                    active: null,
+                    faqs: [
+                        { q: 'Bagaimana proses mendapatkan estimasi harga?', a: 'Proses dimulai dengan Konsultasi via WhatsApp/Formulir. Kami akan meminta data dimensi dan desain. Selanjutnya, kami akan menjadwalkan survei. Survei di area Jawa Timur gratis. Untuk luar Jawa Timur, dikenakan biaya transport yang disepakati, dikalkulasi dari basis Surabaya.' },
+                        { q: 'Apakah harga sudah termasuk material premium dan coating anti-karat?', a: 'Ya. Semua penawaran kami adalah harga jujur tanpa mark-up siluman yang mencakup Material Berkualitas, fabrikasi presisi, lapisan dasar Epoxy anti-karat, Finishing Cat Duco (standar industri), serta instalasi bersih.' },
+                        { q: 'Apakah Anda melayani proyek di luar Jawa Timur?', a: 'Ya, kami melayani proyek konstruksi skala besar di seluruh Indonesia. Basis kami di Surabaya mendukung logistik dan koordinasi tim ke luar pulau. Diskusikan detail proyek Anda agar kami dapat menghitung biaya logistik yang efisien.' },
+                        { q: 'Berapa lama waktu yang dibutuhkan untuk fabrikasi dan instalasi?', a: 'Waktu pengerjaan sangat bergantung pada kompleksitas dan volume proyek. Kami akan memberikan estimasi waktu yang jelas di awal. Umumnya, Kanopi standar membutuhkan 7-14 hari kerja untuk fabrikasi dan instalasi setelah desain disepakati.' }
+                    ]
+                }" class="bg-white rounded-sm shadow-2xl border-t-8 border-navy-deep p-6" style="background-color:#ffffff">
+                    <template x-for="(faq, index) in faqs" :key="index">
+                        <div class="faq-item">
+                            <button @click="active = active === index ? null : index"
+                                    class="flex justify-between items-center w-full py-4 text-left font-bold text-lg text-navy-deep hover:text-orange-safety transition duration-150">
+                                <span x-text="faq.q"></span>
+                                <i class="fas text-orange-safety transition-transform duration-300"
+                                   :class="active === index ? 'fa-minus rotate-180' : 'fa-plus'"></i>
+                            </button>
+                            <div x-show="active === index" x-collapse>
+                                <div class="pb-4 pr-6 text-gray-700 text-base">
+                                    <p x-text="faq.a"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="py-16 bg-gray-100" style="background-color:#f3f4f6">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-mono text-4xl sm:text-5xl font-extrabold text-center text-navy-deep mb-4 tracking-tight">Mulai Konsultasi Gratis</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-xl mx-auto text-lg">Hentikan penundaan proyek Anda. Isi formulir singkat ini (hanya 3 pertanyaan) untuk mendapatkan penawaran cepat dan akurat.</p>
+                <div class="bg-white p-2 rounded-sm shadow-2xl border-t-8 border-orange-safety" style="background-color:#ffffff">
+                    <iframe
+                        data-tally-src="https://tally.so/embed/A7rX8e?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                        loading="lazy"
+                        width="100%"
+                        height="500"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0"
+                        title="Abib Jaya - Konsultasi Proyek">
+                    </iframe>
+                    <script>
+                        window.addEventListener('DOMContentLoaded', function() {
+                            if (typeof Tally !== 'undefined' && typeof Tally.loadEmbeds === 'function') {
+                                Tally.loadEmbeds();
+                            } else {
+                                var script = document.createElement('script');
+                                script.src = 'https://tally.so/widgets/embed.js';
+                                script.onload = function() {
+                                    if (typeof Tally !== 'undefined' && typeof Tally.loadEmbeds === 'function') {
+                                        Tally.loadEmbeds();
+                                    }
+                                };
+                                document.head.appendChild(script);
+                            }
+                        });
+                    </script>
+                    <p class="text-center text-gray-500 mt-6 text-sm">
+                        <i class="fas fa-sync-alt text-orange-safety mr-1"></i>
+                        <strong>Sistem Cepat:</strong> Data Anda langsung masuk ke sistem estimasi kami.
+                        <br>
+                        Atau langsung chat via
+                        <a href="https://wa.me/6285852566683?text=Halo%20Abib%20Jaya.%20Saya%20sudah%20isi%20form%20dan%20ingin%20follow%20up%20segera." target="_blank"
+                           class="font-bold text-green-600 hover:text-green-800">
+                            <i class="fab fa-whatsapp mr-1"></i> WhatsApp (Respon Cepat)
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-navy-deep text-white pt-12 pb-8 border-t-4 border-orange-safety">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-10 mb-8">
+                <div>
+                    <h3 class="font-mono text-2xl font-black text-orange-safety mb-4 tracking-widest">ABIB JAYA</h3>
+                    <p class="text-silver-metallic text-sm">
+                        Bengkel Las Konstruksi Besi & Baja profesional. Berpengalaman 20 tahun, spesialis fabrikasi presisi dengan material Berkualitas. Mitra terpercaya untuk layanan skala nasional.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-mono text-lg font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2 text-silver-metallic text-sm">
+                        <li><a href="#tentangkami" class="hover:text-orange-safety transition duration-150">Tentang Kami</a></li>
+                        <li><a href="#layanan" class="hover:text-orange-safety transition duration-150">Layanan Kami</a></li>
+                        <li><a href="#proseskerja" class="hover:text-orange-safety transition duration-150">Proses Kerja</a></li>
+                        <li><a href="#portofolio" class="hover:text-orange-safety transition duration-150">Portofolio Proyek</a></li>
+                        <li><a href="#faq" class="hover:text-orange-safety transition duration-150">FAQ & Keberatan</a></li>
+                        <li><a href="#kontak" class="hover:text-orange-safety transition duration-150">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-mono text-lg font-bold mb-4">Hubungi Kami</h3>
+                    <ul class="space-y-2 text-silver-metallic text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-orange-safety mt-1 mr-3 flex-shrink-0"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Bengkel+Las+Abib+Jaya+Surabaya" target="_blank" class="hover:text-white transition duration-150">
+                                Lokasi Bengkel: Surabaya, Jawa Timur
+                            </a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-orange-safety mt-1 mr-3 flex-shrink-0"></i>
+                            <a href="tel:+6285852566683" class="hover:text-white transition duration-150">0858-5256-6683 (Telepon/WA)</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-orange-safety mt-1 mr-3 flex-shrink-0"></i>
+                            <a href="mailto:abibjaya.id@gmail.com" class="hover:text-white transition duration-150">abibjaya.id@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-mono text-lg font-bold mb-4">Temukan Bengkel Kami</h3>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bengkel+Las+Abib+Jaya+Surabaya" target="_blank" class="block group relative overflow-hidden bg-gray-800 h-32 rounded-sm mb-4 border-4 border-gray-700 hover:border-orange-safety transition duration-300 shadow-lg">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect width='400' height='200' fill='%230a1628'/%3E%3Ccircle cx='200' cy='65' r='25' fill='none' stroke='%23FF4500' stroke-width='1' opacity='.2'/%3E%3Ccircle cx='200' cy='65' r='40' fill='none' stroke='%23FF4500' stroke-width='1' opacity='.1'/%3E%3Cpath d='M200 45c-11 0-20 9-20 20 0 15 20 35 20 35s20-20 20-35c0-11-9-20-20-20zm0 27c-4 0-7-3-7-7s3-7 7-7 7 3 7 7-3 7-7 7z' fill='%23FF4500'/%3E%3Ctext x='200' y='135' text-anchor='middle' fill='%23FF4500' font-family='Arial' font-weight='bold' font-size='13'%3EBengkel Las Abib Jaya%3C/text%3E%3Ctext x='200' y='155' text-anchor='middle' fill='%23999' font-size='11'%3ESurabaya, Jawa Timur%3C/text%3E%3C/svg%3E"
+                             loading="lazy"
+                             width="400"
+                             height="200"
+                             class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition" alt="Peta Lokasi Bengkel Las Abib Jaya Surabaya">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 p-2">
+                            <div class="w-10 h-10 bg-orange-safety rounded-full flex items-center justify-center mb-1 shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-map-marker-alt text-navy-deep text-xl"></i>
+                            </div>
+                            <p class="text-white font-bold text-sm drop-shadow-md font-mono">BUKA PETA LOKASI</p>
+                            <p class="text-xs text-silver-metallic drop-shadow-md">(Lihat Rute ke Bengkel)</p>
+                        </div>
+                    </a>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/6285852566683?text=Halo%20Abib%20Jaya." target="_blank" class="text-2xl hover:text-orange-safety transition duration-150" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@abibjaya.id" target="_blank" class="text-2xl hover:text-orange-safety transition duration-150" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/abibjaya.id?igsh=MXV0bWR1aDQ4dnR1Mw==" target="_blank" class="text-2xl hover:text-orange-safety transition duration-150" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-sm text-silver-metallic pt-4 border-t border-gray-700 mt-4">
+                © <span x-data="{ year: new Date().getFullYear() }" x-text="year"></span> Abib Jaya Konstruksi. All rights reserved. | Didesain dengan fokus pada Integritas Struktur & Standar Baku.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var PORTFOLIO_IMAGES = [
+            {
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-3.webp',
+                alt: 'Kanopi Atap Kaca Tempered dengan Struktur Industrial',
+                category: 'Proyek Khusus'
+            },
+            {
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-1.webp',
+                alt: 'Tangga Putar Minimalis Besi Tempa Modern',
+                category: 'Kanopi'
+            },
+            {
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-5.webp',
+                alt: 'Konstruksi Struktur Baja Berat WF / H-Beam Gudang',
+                category: 'Pagar'
+            },
+            {
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-4.webp',
+                alt: 'Railing Balkon Stainless Steel dan Kaca Premium',
+                category: 'Railing'
+            },
+            {
+                src: 'https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-2.webp',
+                alt: 'Pagar Cutting Laser Motif Geometris Hollow Galvanis',
+                category: 'Tangga Putar'
+            }
+        ];
+
+        function generateWaLink(category) {
+            var messages = {
+                'Kanopi': 'Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Kanopi].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Atap (Kaca/Alderon/Spandek/Lainnya): ...',
+                'Pagar': 'Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Pagar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Jenis Pagar (Hollow/Besi Tempa/Cutting Laser): ...',
+                'Railing': 'Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Railing].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Panjang (Meter): ...%0A4. Lokasi (Tangga/Balkon) & Material (Stainless/Besi): ...',
+                'Tangga Putar': 'Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Tangga Putar].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Tinggi Lantai ke Lantai: ...%0A4. Diameter Ruang yang Tersedia: ...',
+                'Proyek Khusus': 'Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [Konstruksi Baja Berat/Proyek Khusus].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Luas Bangunan (m2): ...%0A4. Penggunaan (Gudang/Pabrik/Mezzanine): ...'
+            };
+            var message = messages[category] || 'Halo Tim Abib Jaya. Saya TIDAK MAU buang waktu dan SERIUS mengajukan konsultasi untuk proyek [' + category + '].%0A%0AMohon dibalas dengan estimasi kasar atau jadwal survei.%0A%0ABerikut data yang saya miliki:%0A1. Nama: ...%0A2. Lokasi Proyek: ...%0A3. Estimasi Ukuran (PxL): ...%0A4. Jenis Material Utama: ...';
+            return 'https://wa.me/6285852566683?text=' + message;
+        }
+
+        function getPlaceholderSize(category) {
+            if (category === 'Proyek Khusus' || category === 'Kanopi') return { w: 800, h: 600 };
+            if (category === 'Tangga Putar') return { w: 600, h: 800 };
+            return { w: 800, h: 450 };
+        }
+
+        function generateSvgPlaceholder(category) {
+            var size = getPlaceholderSize(category);
+            var w = size.w;
+            var h = size.h;
+            var svgContent = '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '"><rect width="100%" height="100%" fill="#111827"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="#FF4500" font-family="Oswald, sans-serif" font-size="48" font-weight="bold">ABIB JAYA</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="#D3D3D3" font-family="Open Sans, sans-serif" font-size="20">' + category + '</text></svg>';
+            return 'data:image/svg+xml;base64,' + btoa(svgContent);
+        }
+    </script>
+</body>
+</html>
