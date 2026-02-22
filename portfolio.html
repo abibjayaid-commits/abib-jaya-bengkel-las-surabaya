@@ -230,7 +230,7 @@
             <p class="max-w-xl mx-auto text-silver-metallic text-lg mb-3">
                 Setiap foto diambil langsung di lokasi — tanpa rekayasa, tanpa gambar AI.
             </p>
-            <p class="text-gray-500 text-sm font-mono" x-text="'Menampilkan ' + visibleCount + ' dari ' + totalCount + ' dokumentasi proyek'"></p>
+            <p class="text-gray-500 text-sm font-mono">Dokumentasi proyek asli dari lapangan</p>
         </section>
 
         <!-- ── MASONRY GRID ── -->
@@ -279,20 +279,19 @@
             <div class="mt-8 mb-4 text-center" x-show="visibleCount < totalCount">
                 <button class="btn-load-more" @click="loadMore()" :disabled="loading" aria-label="Muat lebih banyak foto">
                     <template x-if="!loading">
-                        <span><i class="fas fa-images mr-2"></i> MUAT <span x-text="Math.min(PAGE_SIZE, totalCount - visibleCount)"></span> FOTO LAGI</span>
+                        <span><i class="fas fa-images mr-2"></i> MUAT LEBIH BANYAK</span>
                     </template>
                     <template x-if="loading">
                         <span><i class="fas fa-spinner fa-spin mr-2"></i> MEMUAT...</span>
                     </template>
                 </button>
-                <p class="text-gray-600 text-xs mt-3 font-mono" x-text="visibleCount + ' / ' + totalCount + ' foto dimuat'"></p>
             </div>
 
             <!-- End state -->
             <div class="mt-8 text-center" x-show="visibleCount >= totalCount">
                 <div class="flex items-center justify-center gap-3 text-gray-600">
                     <span class="w-16 h-px bg-gray-700"></span>
-                    <span class="font-mono text-xs uppercase tracking-widest">Semua <span x-text="totalCount"></span> Foto Ditampilkan</span>
+                    <span class="font-mono text-xs uppercase tracking-widest">Semua Foto Ditampilkan</span>
                     <span class="w-16 h-px bg-gray-700"></span>
                 </div>
             </div>
