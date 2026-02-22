@@ -3,263 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Arsip Dokumentasi Proyek Abib Jaya. Galeri lengkap bukti pengerjaan konstruksi besi, baja berat, dan kanopi di seluruh Indonesia.">
-    <link rel="icon" type="image/png" href="https://placehold.co/32x32/FF4500/001F3F?text=AJ">
-    <title>Arsip Proyek | Abib Jaya Konstruksi</title>
-    <link rel="canonical" href="https://abibjaya.netlify.app/" />
-    
-    <!-- PRECONNECT (Wajib untuk performa CDN) -->
+    <meta name="description" content="Galeri proyek Bengkel Las Abib Jaya Surabaya. 150+ dokumentasi asli canopy, pagar minimalis, teralis, railing, folding gate & rolling door. Bukan gambar AI — semua foto diambil langsung di lokasi.">
+    <meta name="keywords" content="galeri proyek bengkel las Surabaya, foto canopy, foto pagar minimalis, dokumentasi konstruksi besi, Abib Jaya portofolio">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Arsip Proyek Abib Jaya — 150+ Foto Proyek Asli Konstruksi Besi Surabaya">
+    <meta property="og:description" content="Galeri lengkap dokumentasi proyek canopy, pagar, teralis, railing & konstruksi besi Abib Jaya. Semua foto asli dari lokasi proyek.">
+    <meta property="og:image" content="https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-3.webp">
+    <meta property="og:url" content="https://abibjaya.netlify.app/portfolio.html">
+    <meta property="og:locale" content="id_ID">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arsip Proyek Abib Jaya — 150+ Foto Proyek Asli">
+    <meta name="twitter:description" content="Galeri lengkap dokumentasi proyek konstruksi besi Abib Jaya Surabaya. Semua foto asli dari lokasi.">
+    <meta name="twitter:image" content="https://abibjayaid-commits.github.io/abib-jaya-assets/project-1-3.webp">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FF4500'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%23001F3F' font-family='Arial Black,sans-serif' font-weight='900' font-size='16'%3EAJ%3C/text%3E%3C/svg%3E">
+    <title>Arsip Proyek | Abib Jaya — Bengkel Las & Konstruksi Besi Surabaya</title>
+    <link rel="canonical" href="https://abibjaya.netlify.app/portfolio.html" />
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.15.8/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.8/dist/cdn.min.js" defer></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'navy-deep': '#001F3F',      
-                        'navy-light': '#003366', 
-                        'orange-safety': '#FF4500',    
-                        'dark-bg': '#0f172a',        
+                        'navy-deep':       '#001F3F',
+                        'navy-light':      '#003366',
+                        'orange-safety':   '#FF4500',
+                        'orange-dark':     '#CC3700',
+                        'dark-bg':         '#0f172a',
                         'silver-metallic': '#D3D3D3',
                     },
                     fontFamily: {
-                        mono: ['Oswald', 'sans-serif'],  
-                        sans: ['Open Sans', 'sans-serif'],  
+                        mono: ['Oswald', 'sans-serif'],
+                        sans: ['Open Sans', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        "name": "Arsip Proyek Bengkel Las Abib Jaya",
+        "description": "Dokumentasi 150+ proyek konstruksi besi — canopy, pagar, teralis, railing, folding gate & rolling door di Surabaya dan Jawa Timur.",
+        "url": "https://abibjaya.netlify.app/portfolio.html",
+        "author": {
+            "@type": "LocalBusiness",
+            "name": "Bengkel Las Abib Jaya",
+            "url": "https://abibjaya.netlify.app/"
+        }
+    }
+    </script>
+
     <style>
         [x-cloak] { display: none !important; }
-        .bg-grid-pattern {
+
+        /* ── BACKGROUND GRID ── */
+        body {
             background-color: #0f172a;
-            background-image: linear-gradient(rgba(255, 69, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 69, 0, 0.05) 1px, transparent 1px);
+            background-image:
+                linear-gradient(rgba(255,69,0,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,69,0,0.04) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #001F3F; }
-        ::-webkit-scrollbar-thumb { background: #FF4500; }
 
-        /* MASONRY OPTIMIZATION */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #001F3F; }
+        ::-webkit-scrollbar-thumb { background: #FF4500; border-radius: 4px; }
+
+        /* ── MASONRY ── */
         .masonry-grid {
             column-count: 1;
-            column-gap: 16px;
-            line-height: 0; /* HACK: Membunuh ghost space vertical */
-            font-size: 0;   
+            column-gap: 12px;
         }
-        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 4; } }
+        @media (min-width: 480px)  { .masonry-grid { column-count: 2; } }
+        @media (min-width: 768px)  { .masonry-grid { column-count: 3; } }
+        @media (min-width: 1280px) { .masonry-grid { column-count: 4; } }
 
         .masonry-item {
             display: inline-block;
             width: 100%;
             break-inside: avoid;
             -webkit-column-break-inside: avoid;
-            margin-bottom: 16px;
-            line-height: 1.5; /* Reset line-height untuk konten */
-            font-size: 1rem;
-            
-            background-color: #020617; 
-            border-radius: 8px;
+            margin-bottom: 12px;
+            background-color: #020617;
+            border-radius: 6px;
             overflow: hidden;
-            border: 1px solid #374151;
-            
-            /* Render optimization */
-            backface-visibility: hidden;
+            border: 1px solid #1e293b;
+            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            /* GPU layer — cegah reflow saat hover */
             transform: translateZ(0);
-            transition: border-color 0.3s ease, transform 0.3s ease;
+            backface-visibility: hidden;
+            will-change: transform;
         }
-
         .masonry-item:hover {
             border-color: #FF4500;
-            transform: translateY(-2px);
-            z-index: 10;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(255,69,0,0.25);
         }
 
+        /* ── BLUR-UP TECHNIQUE ────────────────────────────────────────
+           1. Gambar mulai: opacity 0, blur kuat, sedikit scale up
+           2. Saat @load terpanggil: class img-loaded ditambah → transisi
+              halus ke tajam + scale normal
+           3. overflow:hidden pada .masonry-item memotong bleeding scale
+        ──────────────────────────────────────────────────────────── */
         .project-img {
             width: 100%;
-            height: auto;  
-            display: block; 
-            transition: opacity 0.3s ease-in-out;
-            background-color: #020617; /* Placeholder color saat loading */
+            height: auto;
+            display: block;
+            transition: filter 0.55s ease, transform 0.55s ease, opacity 0.4s ease;
+            will-change: filter, transform, opacity;
         }
-        
         .img-loading {
             opacity: 0;
-            min-height: 250px; /* Vital untuk mengurangi CLS */
+            filter: blur(20px);
+            transform: scale(1.08);
+            min-height: 200px;
         }
-        
         .img-loaded {
             opacity: 1;
+            filter: blur(0px);
+            transform: scale(1);
             min-height: auto;
+        }
+
+        /* ── MODAL ── */
+        .modal-img {
+            max-width: min(92vw, 1100px);
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 4px;
+            /* Blur-up juga di modal */
+            transition: filter 0.4s ease, opacity 0.3s ease;
+        }
+        .modal-img-loading { filter: blur(16px); opacity: 0.4; }
+        .modal-img-loaded  { filter: blur(0);   opacity: 1; }
+
+        /* Nav arrow buttons */
+        .modal-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 110;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: rgba(0,31,63,0.85);
+            border: 2px solid #FF4500;
+            color: #FF4500;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            backdrop-filter: blur(4px);
+        }
+        .modal-nav:hover { background: #FF4500; color: #001F3F; }
+        .modal-nav-prev { left: 12px; }
+        .modal-nav-next { right: 12px; }
+        @media (min-width: 768px) {
+            .modal-nav-prev { left: 24px; }
+            .modal-nav-next { right: 24px; }
+        }
+
+        /* ── LOAD MORE BUTTON ── */
+        .btn-load-more {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 36px;
+            background: #001F3F;
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 2px solid #FF4500;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .btn-load-more:hover { background: #FF4500; color: #001F3F; transform: translateY(-2px); }
+        .btn-load-more:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project-img, .masonry-item, .modal-img { transition: none !important; }
+            .img-loading { filter: none; transform: none; }
         }
     </style>
 </head>
 
-<body class="bg-dark-bg text-gray-300 font-sans antialiased" x-data="portfolioApp()">
-    
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-navy-deep border-b-4 border-orange-safety shadow-2xl">
+<body class="text-gray-300 font-sans antialiased" x-data="portfolioApp()" @keydown.escape.window="closeModal()" @keydown.arrow-left.window="prevImage()" @keydown.arrow-right.window="nextImage()">
+
+    <!-- ── HEADER ── -->
+    <header class="sticky top-0 z-40 bg-navy-deep border-b-4 border-orange-safety shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Back Button -->
-                <a href="index.html" class="flex items-center space-x-2 group">
-                    <i class="fas fa-arrow-left text-orange-safety group-hover:text-white transition"></i>
-                    <span class="font-mono text-2xl font-black tracking-widest text-white">ABIB <span class="text-orange-safety">JAYA</span></span>
+                <a href="index.html" class="flex items-center gap-3 group" aria-label="Kembali ke halaman utama">
+                    <i class="fas fa-arrow-left text-orange-safety group-hover:text-white transition text-sm"></i>
+                    <span class="font-mono text-2xl font-black tracking-widest text-orange-safety">ABIB <span class="text-white">JAYA</span></span>
                 </a>
-                <div class="hidden md:block"></div> 
-                <a href="https://wa.me/6281216359499?text=Halo%20Abib%20Jaya.%20Saya%20melihat%20arsip%20proyek%20Anda%20dan%20tertarik%20konsultasi..." class="bg-orange-safety text-navy-deep px-4 py-2 font-bold font-mono text-sm uppercase hover:bg-white transition rounded-md" target="_blank">
+                <a href="https://wa.me/6285852566683?text=Halo%20Abib%20Jaya%2C%20saya%20melihat%20galeri%20proyek%20dan%20ingin%20konsultasi."
+                   class="bg-orange-safety text-navy-deep px-4 py-2 font-bold font-mono text-sm uppercase hover:bg-white transition rounded-sm border-2 border-orange-safety hover:border-white"
+                   target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp mr-1"></i> MINTA PENAWARAN
                 </a>
             </div>
         </div>
     </header>
-    
-    <main class="bg-grid-pattern min-h-screen pb-20">
-        
-        <section class="pt-16 pb-8 text-center px-4">
-            <h1 class="font-mono text-5xl md:text-6xl font-black text-white uppercase tracking-tighter mb-2">ARSIP PROYEK</h1>
-            <p class="max-w-2xl mx-auto text-silver-metallic text-lg">
-                Bukan janji di atas kertas. Ini adalah bukti kerja keras dan presisi tim kami di lapangan.
+
+    <main class="min-h-screen pb-24">
+
+        <!-- ── HERO ── -->
+        <section class="pt-16 pb-10 text-center px-4">
+            <p class="text-orange-safety font-bold uppercase tracking-widest text-sm mb-3">BUKAN JANJI DI ATAS KERTAS</p>
+            <h1 class="font-mono text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4">ARSIP PROYEK</h1>
+            <p class="max-w-xl mx-auto text-silver-metallic text-lg mb-3">
+                Setiap foto diambil langsung di lokasi — tanpa rekayasa, tanpa gambar AI.
             </p>
+            <p class="text-gray-500 text-sm font-mono" x-text="'Menampilkan ' + visibleCount + ' dari ' + totalCount + ' dokumentasi proyek'"></p>
         </section>
-        
-        <section class="max-w-[1400px] mx-auto px-4">
-            
-            <!-- MASONRY CONTAINER -->
-            <div class="masonry-grid">
-                
-                <template x-for="(item, index) in allData" :key="index">
-                    <div class="masonry-item group cursor-pointer relative" 
+
+        <!-- ── MASONRY GRID ── -->
+        <section class="max-w-[1400px] mx-auto px-3 sm:px-4">
+            <div class="masonry-grid" role="list" aria-label="Galeri proyek Abib Jaya">
+
+                <template x-for="(item, index) in visibleItems" :key="item.id">
+                    <div class="masonry-item group cursor-pointer relative"
                          x-data="{ imgLoaded: false }"
-                         @click="openModal(item.src, item.id)">
-                        
-                        <!-- Image: Error handling dipindah ke fungsi JS agar HTML bersih -->
-                        <img :src="item.src" 
-                             loading="lazy" 
+                         role="listitem"
+                         :aria-label="'Foto proyek #' + item.id"
+                         tabindex="0"
+                         @click="openModal(index)"
+                         @keydown.enter="openModal(index)"
+                         @keydown.space.prevent="openModal(index)">
+
+                        <!-- Shimmer placeholder -->
+                        <div x-show="!imgLoaded"
+                             class="absolute inset-0 z-0"
+                             style="background: linear-gradient(90deg, #0f172a 25%, #1e293b 50%, #0f172a 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite;"
+                             aria-hidden="true">
+                        </div>
+
+                        <img :src="item.src"
+                             loading="lazy"
                              decoding="async"
-                             :alt="'Dokumentasi Proyek Konstruksi Abib Jaya - Foto ' + item.id" 
+                             :alt="'Dokumentasi proyek konstruksi besi Abib Jaya Surabaya - foto ' + item.id"
                              class="project-img"
                              :class="imgLoaded ? 'img-loaded' : 'img-loading'"
                              @load="imgLoaded = true"
-                             @error="handleImageError($el)">
-                        
-                        <!-- Loading Spinner -->
-                        <div x-show="!imgLoaded" class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
-                            <i class="fas fa-hard-hat text-gray-700 animate-pulse text-3xl"></i>
-                        </div>
+                             @error="$el.src = SVG_PLACEHOLDER; imgLoaded = true; $el.style.minHeight='150px'">
 
-                        <!-- Overlay Hover -->
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
-                            <i class="fas fa-search-plus text-white text-3xl drop-shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200"></i>
+                        <!-- Hover overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-end p-3 pointer-events-none">
+                            <div class="flex items-center justify-between">
+                                <span class="text-orange-safety font-mono text-xs font-bold uppercase tracking-wider">Abib Jaya</span>
+                                <i class="fas fa-expand text-white text-sm"></i>
+                            </div>
                         </div>
-
                     </div>
                 </template>
 
             </div>
-            
-            <div class="mt-16 text-center pb-20">
-                <p class="text-gray-500 font-mono text-sm uppercase tracking-widest mt-8 flex items-center justify-center gap-2">
-                    <span class="w-12 h-px bg-gray-700"></span>
-                    ARSIP LENGKAP
-                    <span class="w-12 h-px bg-gray-700"></span>
-                </p>
+
+            <!-- ── LOAD MORE ── -->
+            <div class="mt-8 mb-4 text-center" x-show="visibleCount < totalCount">
+                <button class="btn-load-more" @click="loadMore()" :disabled="loading" aria-label="Muat lebih banyak foto">
+                    <template x-if="!loading">
+                        <span><i class="fas fa-images mr-2"></i> MUAT <span x-text="Math.min(PAGE_SIZE, totalCount - visibleCount)"></span> FOTO LAGI</span>
+                    </template>
+                    <template x-if="loading">
+                        <span><i class="fas fa-spinner fa-spin mr-2"></i> MEMUAT...</span>
+                    </template>
+                </button>
+                <p class="text-gray-600 text-xs mt-3 font-mono" x-text="visibleCount + ' / ' + totalCount + ' foto dimuat'"></p>
+            </div>
+
+            <!-- End state -->
+            <div class="mt-8 text-center" x-show="visibleCount >= totalCount">
+                <div class="flex items-center justify-center gap-3 text-gray-600">
+                    <span class="w-16 h-px bg-gray-700"></span>
+                    <span class="font-mono text-xs uppercase tracking-widest">Semua <span x-text="totalCount"></span> Foto Ditampilkan</span>
+                    <span class="w-16 h-px bg-gray-700"></span>
+                </div>
+            </div>
+
+            <!-- CTA bawah -->
+            <div class="mt-16 text-center">
+                <p class="text-silver-metallic mb-6 text-lg">Tertarik dengan hasil kerja kami?</p>
+                <a href="https://wa.me/6285852566683?text=Halo%20Abib%20Jaya%2C%20saya%20melihat%20galeri%20proyek%20dan%20ingin%20konsultasi."
+                   target="_blank" rel="noopener noreferrer"
+                   class="inline-block px-10 py-4 bg-orange-safety text-navy-deep font-mono font-black text-lg uppercase rounded-sm hover:bg-white transition duration-300 border-2 border-orange-safety hover:border-white shadow-lg">
+                    <i class="fab fa-whatsapp mr-2"></i> KONSULTASI GRATIS SEKARANG
+                </a>
             </div>
         </section>
-        
-        <!-- Modal Gambar -->
-        <div x-show="modalOpen" 
-             class="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8 bg-black/95 backdrop-blur-sm" 
-             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
-             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-             x-cloak
-             @keydown.escape.window="closeModal()">
-            
-            <div class="absolute inset-0 cursor-pointer" @click="closeModal()"></div>
-            
-            <div class="relative z-10 w-full h-full flex flex-col items-center justify-center pointer-events-none">
-                <div class="relative pointer-events-auto max-w-full max-h-full">
-                    <button @click="closeModal()" class="absolute -top-12 right-0 md:-right-12 text-white hover:text-orange-safety transition p-2 bg-black/50 rounded-full w-10 h-10 flex items-center justify-center border border-gray-600 z-50">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
 
-                    <img :src="activeItem" 
-                         class="max-w-[95vw] max-h-[85vh] object-contain rounded-sm border border-gray-800 shadow-2xl bg-black select-none"
-                         style="box-shadow: 0 0 50px rgba(0,0,0,0.8);">
-                    
-                    <div class="mt-4 text-center">
-                        <span class="inline-block bg-navy-deep text-orange-safety font-mono text-xs px-3 py-1 rounded border border-orange-safety/30">
-                            ID FILE: #<span x-text="activeId"></span>
-                        </span>
+        <!-- ── MODAL ── -->
+        <div x-show="modalOpen"
+             x-cloak
+             x-trap.noscroll="modalOpen"
+             role="dialog"
+             aria-modal="true"
+             :aria-label="'Detail foto proyek #' + (activeItem ? activeItem.id : '')"
+             class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm"
+             x-transition:enter="transition ease-out duration-250"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0">
+
+            <!-- Click backdrop to close -->
+            <div class="absolute inset-0" @click="closeModal()" aria-hidden="true"></div>
+
+            <!-- Prev / Next arrows -->
+            <button class="modal-nav modal-nav-prev"
+                    @click.stop="prevImage()"
+                    :disabled="activeIndex <= 0"
+                    :class="activeIndex <= 0 ? 'opacity-30 cursor-not-allowed' : ''"
+                    aria-label="Foto sebelumnya">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav modal-nav-next"
+                    @click.stop="nextImage()"
+                    :disabled="activeIndex >= visibleItems.length - 1"
+                    :class="activeIndex >= visibleItems.length - 1 ? 'opacity-30 cursor-not-allowed' : ''"
+                    aria-label="Foto berikutnya">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Image container -->
+            <div class="relative z-10 flex flex-col items-center pointer-events-none" x-data="{ mLoaded: false }" x-effect="mLoaded = false">
+                <!-- Close button -->
+                <button @click.stop="closeModal()"
+                        class="pointer-events-auto absolute -top-12 right-0 w-10 h-10 rounded-full bg-navy-deep border-2 border-orange-safety text-orange-safety hover:bg-orange-safety hover:text-navy-deep flex items-center justify-center transition z-50"
+                        aria-label="Tutup modal">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <template x-if="activeItem">
+                    <div class="pointer-events-auto">
+                        <img :src="activeItem.src"
+                             :alt="'Proyek konstruksi besi Abib Jaya #' + activeItem.id"
+                             class="modal-img shadow-2xl"
+                             :class="mLoaded ? 'modal-img-loaded' : 'modal-img-loading'"
+                             @load="mLoaded = true"
+                             @error="$el.src = SVG_PLACEHOLDER; mLoaded = true"
+                             draggable="false">
+
+                        <!-- Counter + CTA -->
+                        <div class="flex items-center justify-between mt-4 px-1">
+                            <span class="font-mono text-xs text-orange-safety border border-orange-safety/30 px-3 py-1 rounded uppercase tracking-wider">
+                                Bengkel Las Abib Jaya
+                            </span>
+                            <a :href="'https://wa.me/6285852566683?text=Halo%20Abib%20Jaya%2C%20saya%20tertarik%20dengan%20salah%20satu%20proyek%20di%20galeri.%20Boleh%20konsultasi%3F'"
+                               target="_blank" rel="noopener noreferrer"
+                               class="text-xs font-bold font-mono bg-orange-safety text-navy-deep px-4 py-2 rounded-sm hover:bg-white transition uppercase">
+                                <i class="fab fa-whatsapp mr-1"></i> Minta Model Ini
+                            </a>
+                        </div>
                     </div>
-                </div>
+                </template>
             </div>
         </div>
 
     </main>
-    
-    <footer class="bg-black text-center py-6 border-t border-gray-800 text-gray-600 text-xs font-mono">
-        <p>&copy; 2024 ABIB JAYA KONSTRUKSI.</p>
+
+    <footer class="bg-navy-deep border-t-4 border-orange-safety text-center py-6 text-gray-500 text-xs font-mono">
+        <a href="index.html" class="text-orange-safety hover:text-white transition mr-3">← Kembali ke Beranda</a>
+        &copy; <span id="yr"></span> Abib Jaya Konstruksi. All rights reserved.
     </footer>
-    
+
     <script>
-        // Placeholder Base64 dipisah biar tidak mengotori HTML
-        const SVG_PLACEHOLDER = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzAyMDYxNyIvPjxyZWN0IHg9IjQwJSIgeT0iNDAlIiB3aWR0aD0iMjAlIiBoZWlnaHQ9IjIwJSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkY0NTAwIiBzdHJva2Utd2lkdGg9IjIiLz48bGluZSB4MT0iNDAlIiB5MT0iNDAlIiB4Mj0iNjAlIiB5Mj0iNjAlIiBzdHJva2U9IiNGRjQ1MDAiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI2MCUiIHkxPSI0MCUiIHgyPSI0MCUiIHkyPSI2MCUiIHN0cm9rZT0iI0ZGNDUwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNTAlIiB5PSI3NSUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlN2U1ZTRIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCI+R0FNQkFSIEVSUk9SPC90ZXh0Pjwvc3ZnPg==";
+        document.getElementById('yr').textContent = new Date().getFullYear();
 
-        function portfolioApp() {
-            const allImages = [];
-            const excludeIndices = [67, 156, 157, 94, 128, 74]; 
+        /* ── PLACEHOLDER SVG (base64) ── */
+        const SVG_PLACEHOLDER = "data:image/svg+xml;base64," + btoa(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">' +
+            '<rect width="100%" height="100%" fill="#020617"/>' +
+            '<rect x="160" y="110" width="80" height="80" fill="none" stroke="#FF4500" stroke-width="2"/>' +
+            '<line x1="160" y1="110" x2="240" y2="190" stroke="#FF4500" stroke-width="2"/>' +
+            '<line x1="240" y1="110" x2="160" y2="190" stroke="#FF4500" stroke-width="2"/>' +
+            '<text x="200" y="228" dominant-baseline="middle" text-anchor="middle" fill="#6b7280" font-family="sans-serif" font-size="13">Gambar tidak tersedia</text>' +
+            '</svg>'
+        );
 
-            for (let i = 1; i <= 157; i++) {
-                if (!excludeIndices.includes(i)) {
-                    allImages.push({
-                        id: i,
-                        src: `https://abibjayaid-commits.github.io/abib-jaya-assets/project-2-${i}.webp`
-                    });
-                }
+        /* ── KONFIGURASI ── */
+        const EXCLUDE_IDS  = new Set([67, 74, 94, 128, 156, 157]);
+        const PAGE_SIZE    = 24;   // jumlah foto per batch
+        const TOTAL_IMAGES = 157;
+
+        /* ── BUILD IMAGE ARRAY ── */
+        const ALL_IMAGES = [];
+        for (let i = 1; i <= TOTAL_IMAGES; i++) {
+            if (!EXCLUDE_IDS.has(i)) {
+                ALL_IMAGES.push({
+                    id: i,
+                    src: `https://abibjayaid-commits.github.io/abib-jaya-assets/project-2-${i}.webp`
+                });
             }
-            
+        }
+
+        /* ── ALPINE APP ── */
+        function portfolioApp() {
             return {
-                allData: allImages,
-                
+                /* constants exposed to template */
+                SVG_PLACEHOLDER,
+                PAGE_SIZE,
+                totalCount: ALL_IMAGES.length,
+
+                /* state */
+                visibleItems: [],
+                visibleCount: 0,
+                loading: false,
+
                 modalOpen: false,
-                activeItem: '',
-                activeId: '',
-                
-                openModal(src, id) {
-                    this.activeItem = src;
-                    this.activeId = id;
-                    this.modalOpen = true;
-                    document.body.style.overflow = 'hidden';
-                },
-                
-                closeModal() {
-                    this.modalOpen = false;
-                    document.body.style.overflow = 'auto';
+                activeIndex: 0,
+                activeItem: null,
+
+                /* lifecycle */
+                init() {
+                    this.loadMore(); // load batch pertama
                 },
 
-                handleImageError(el) {
-                    el.onerror = null; 
-                    el.src = SVG_PLACEHOLDER;
-                    el.classList.remove('img-loading');
-                    el.classList.add('img-loaded');
-                    // Opsional: Tambahkan border merah agar ketahuan file rusak
-                    el.style.border = '1px solid #ef4444';
-                }
+                /* ── PAGINATION ── */
+                loadMore() {
+                    if (this.loading || this.visibleCount >= this.totalCount) return;
+                    this.loading = true;
+
+                    /* Sedikit delay agar spinner kelihatan smooth */
+                    setTimeout(() => {
+                        const next = ALL_IMAGES.slice(this.visibleCount, this.visibleCount + PAGE_SIZE);
+                        this.visibleItems.push(...next);
+                        this.visibleCount += next.length;
+                        this.loading = false;
+                    }, 120);
+                },
+
+                /* ── MODAL ── */
+                openModal(index) {
+                    this.activeIndex = index;
+                    this.activeItem  = this.visibleItems[index];
+                    this.modalOpen   = true;
+                },
+
+                closeModal() {
+                    this.modalOpen  = false;
+                    this.activeItem = null;
+                },
+
+                prevImage() {
+                    if (!this.modalOpen || this.activeIndex <= 0) return;
+                    this.activeIndex--;
+                    this.activeItem = this.visibleItems[this.activeIndex];
+                },
+
+                nextImage() {
+                    if (!this.modalOpen) return;
+                    /* Auto-load more jika mendekati akhir batch yang dimuat */
+                    if (this.activeIndex >= this.visibleItems.length - 3 && this.visibleCount < this.totalCount) {
+                        this.loadMore();
+                    }
+                    if (this.activeIndex >= this.visibleItems.length - 1) return;
+                    this.activeIndex++;
+                    this.activeItem = this.visibleItems[this.activeIndex];
+                },
             }
         }
     </script>
+
+    <!-- Shimmer animation (tidak bisa di Tailwind tanpa plugin) -->
+    <style>
+        @keyframes shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
 </body>
 </html>
