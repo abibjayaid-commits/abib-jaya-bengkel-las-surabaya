@@ -200,6 +200,14 @@
             .img-loading { filter: none; transform: none; }
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSMDL0KMS0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KSMDL0KMS0');
+    </script>
 </head>
 
 <body class="text-gray-300 font-sans antialiased" x-data="portfolioApp()" @keydown.escape.window="closeModal()" @keydown.arrow-left.window="prevImage()" @keydown.arrow-right.window="nextImage()">
@@ -490,3 +498,4 @@
     </style>
 </body>
 </html>
+
